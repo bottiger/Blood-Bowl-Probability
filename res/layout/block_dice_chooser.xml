@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="wrap_content" android:layout_height="wrap_content"
+	android:orientation="vertical"  android:padding="10dp">
+
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:orientation="horizontal" android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:gravity="center">
+
+		<ImageButton android:id="@+id/blocDiePow"
+			android:layout_weight="1" android:src="@drawable/pow"
+			android:layout_width="wrap_content" android:layout_height="wrap_content" />
+
+		<ImageButton android:id="@+id/blocDieStumbles"
+			android:layout_weight="1" android:src="@drawable/stumbles"
+			android:layout_width="wrap_content" android:layout_height="wrap_content" />
+
+		<ImageButton android:id="@+id/blockDiePushed"
+			android:layout_weight="1" android:src="@drawable/pushed"
+			android:layout_width="wrap_content" android:layout_height="wrap_content" />
+
+	</LinearLayout>
+
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:orientation="horizontal" android:layout_width="fill_parent"
+		android:layout_height="wrap_content" android:gravity="center">
+
+		<ImageButton android:id="@+id/blocDieBothdown"
+			android:src="@drawable/bothdown"
+			android:layout_width="wrap_content" android:layout_height="wrap_content" />
+
+		<ImageButton android:id="@+id/blocDieSkull"
+			android:src="@drawable/skull"
+			android:layout_width="wrap_content" android:layout_height="wrap_content" />
+
+	</LinearLayout>
+
+</LinearLayout>

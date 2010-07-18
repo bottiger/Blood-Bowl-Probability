@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, BloodBowlProbability!</string>
+    <string name="app_name">Blood Bowl Probability Calculator</string>
+<string name="two_plus">2+</string>
+<string name="three_plus">3+</string>
+<string name="four_plus">4+</string>
+<string name="five_plus">5+</string>
+<string name="six_plus">6+</string>
+<string name="calculateProbability">Calculate Probability</string>
+<string name="clearList">reset</string>
+<string name="teamRerollOn">Include team reroll</string>
+<string name="teamRerollOff">Exclude team reroll</string>
+
+
+
+
+
+<color name="active_button">#00FF00</color>
+<color name="deactive_button">#FF0000</color>
+<string name="noRerollText">No rerolls</string>
+<string name="blockDiceText">Block Dice</string>
+<string name="blockDiceTwoDown">-3</string>
+<string name="blockDiceOneDown">-2</string>
+<string name="blockDiceOne">1</string>
+<string name="blockDiceTwo">2</string>
+<string name="blockDiceThree">3</string>
+
+<string name="rerollOne">Green</string>
+<string name="rerollTwo">Blue</string>
+<string name="rerollThree">Red</string>
+<string name="rerollFour">Yellow</string>
+<string name="rerollText">Rerolls</string>
+</resources>
