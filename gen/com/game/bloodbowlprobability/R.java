@@ -27,28 +27,30 @@ public final class R {
         public static final int blocDiePow=0x7f060000;
         public static final int blocDieSkull=0x7f060004;
         public static final int blocDieStumbles=0x7f060001;
-        public static final int blockDiceOne=0x7f06000e;
-        public static final int blockDiceOneDown=0x7f06000d;
-        public static final int blockDiceText=0x7f06000b;
-        public static final int blockDiceThree=0x7f060010;
-        public static final int blockDiceTwo=0x7f06000f;
-        public static final int blockDiceTwoDown=0x7f06000c;
+        public static final int blockDiceAccept=0x7f060005;
+        public static final int blockDiceCancel=0x7f060006;
+        public static final int blockDiceOne=0x7f060010;
+        public static final int blockDiceOneDown=0x7f06000f;
+        public static final int blockDiceText=0x7f06000d;
+        public static final int blockDiceThree=0x7f060012;
+        public static final int blockDiceTwo=0x7f060011;
+        public static final int blockDiceTwoDown=0x7f06000e;
         public static final int blockDiePushed=0x7f060002;
-        public static final int calculateProbability=0x7f060018;
-        public static final int clearList=0x7f060019;
-        public static final int five_plus=0x7f060009;
-        public static final int four_plus=0x7f060008;
-        public static final int noRerollText=0x7f060005;
-        public static final int probabilityResult=0x7f060017;
-        public static final int rerollFour=0x7f060015;
-        public static final int rerollOne=0x7f060012;
-        public static final int rerollText=0x7f060011;
-        public static final int rerollThree=0x7f060014;
-        public static final int rerollTwo=0x7f060013;
-        public static final int sequenceViewer=0x7f060016;
-        public static final int six_plus=0x7f06000a;
-        public static final int three_plus=0x7f060007;
-        public static final int two_plus=0x7f060006;
+        public static final int calculateProbability=0x7f06001a;
+        public static final int clearList=0x7f06001b;
+        public static final int five_plus=0x7f06000b;
+        public static final int four_plus=0x7f06000a;
+        public static final int noRerollText=0x7f060007;
+        public static final int probabilityResult=0x7f060019;
+        public static final int rerollFour=0x7f060017;
+        public static final int rerollOne=0x7f060014;
+        public static final int rerollText=0x7f060013;
+        public static final int rerollThree=0x7f060016;
+        public static final int rerollTwo=0x7f060015;
+        public static final int sequenceViewer=0x7f060018;
+        public static final int six_plus=0x7f06000c;
+        public static final int three_plus=0x7f060009;
+        public static final int two_plus=0x7f060008;
     }
     public static final class layout {
         public static final int block_dice_chooser=0x7f030000;
@@ -56,6 +58,8 @@ public final class R {
     }
     public static final class string {
         public static final int app_name=0x7f040001;
+        public static final int blockDiceAccept=0x7f040017;
+        public static final int blockDiceCancel=0x7f040018;
         public static final int blockDiceOne=0x7f04000f;
         public static final int blockDiceOneDown=0x7f04000e;
         public static final int blockDiceText=0x7f04000c;

@@ -16,6 +16,8 @@
 
 
 
+
+
 <color name="active_button">#00FF00</color>
 <color name="deactive_button">#FF0000</color>
 <string name="noRerollText">No rerolls</string>
@@ -31,4 +33,6 @@
 <string name="rerollThree">Red</string>
 <string name="rerollFour">Yellow</string>
 <string name="rerollText">Rerolls</string>
+<string name="blockDiceAccept">Accept</string>
+<string name="blockDiceCancel">Cancel</string>
 </resources>

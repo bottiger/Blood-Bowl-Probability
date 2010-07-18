@@ -1,12 +1,9 @@
 package com.game.bloodbowlprobability;
 
-import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
 
 import android.app.Activity;
 import android.app.Dialog;
-import android.content.Context;
 import android.graphics.PorterDuff;
 import android.graphics.Color;
 import android.graphics.PorterDuffColorFilter;
@@ -18,15 +15,19 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class BloodBowlProbability extends Activity implements OnClickListener {
 
 	private BloodBowlDieReroll required_roll = new BloodBowlDieReroll(0);
 	private BloodBowlDieReroll rerollOne = new BloodBowlDieReroll(1);
 	private BloodBowlDieReroll rerollTwo = new BloodBowlDieReroll(1);;
-	private BloodBowlDieReroll rerollThree = new BloodBowlDieReroll(1);;
-	private BloodBowlDieReroll rerollFour = new BloodBowlDieReroll(1);;
+	private BloodBowlDieReroll rerollThree = new BloodBowlDieReroll(1);
+	private BloodBowlDieReroll rerollFour = new BloodBowlDieReroll(1);
+	
+	private BloodBowlDieReroll rerollOneTeam = new BloodBowlDieReroll(1);
+	private BloodBowlDieReroll rerollTwoTeam = new BloodBowlDieReroll(1);;
+	private BloodBowlDieReroll rerollThreeTeam = new BloodBowlDieReroll(1);
+	private BloodBowlDieReroll rerollFourTeam = new BloodBowlDieReroll(1);
 
 	private Button twoPlusButton;
 	private Button threePlusButton;
@@ -52,6 +53,7 @@ public class BloodBowlProbability extends Activity implements OnClickListener {
 	private TextView probabilityResult;
 
 	private LinkedList<BloodBowlDieRoll> numberSequence = new LinkedList<BloodBowlDieRoll>();
+	private LinkedList<BloodBowlDieRoll> numberSequenceTeamReroll = new LinkedList<BloodBowlDieRoll>();
 
 	/** Called when the activity is first created. */
 	@Override
@@ -157,19 +159,19 @@ public class BloodBowlProbability extends Activity implements OnClickListener {
 			break;
 
 		case R.id.rerollOne:
-			addPersistingReroll(this.rerollOne);
+			addPersistingReroll(this.rerollOne, this.rerollOneTeam);
 			break;
 
 		case R.id.rerollTwo:
-			addPersistingReroll(this.rerollTwo);
+			addPersistingReroll(this.rerollTwo, this.rerollTwoTeam);
 			break;
 
 		case R.id.rerollThree:
-			addPersistingReroll(this.rerollThree);
+			addPersistingReroll(this.rerollThree, this.rerollThreeTeam);
 			break;
 
 		case R.id.rerollFour:
-			addPersistingReroll(this.rerollFour);
+			addPersistingReroll(this.rerollFour, this.rerollFourTeam);
 			break;
 
 		case R.id.calculateProbability:
@@ -178,8 +180,13 @@ public class BloodBowlProbability extends Activity implements OnClickListener {
 				BloodBowlDieRoll[] s = (BloodBowlDieRoll[]) this.numberSequence
 						.toArray(new BloodBowlDieRoll[this.numberSequence
 								.size()]);
+				
+				BloodBowlDieRoll[] sTeam = (BloodBowlDieRoll[]) this.numberSequenceTeamReroll
+				.toArray(new BloodBowlDieRoll[this.numberSequenceTeamReroll
+						.size()]);
+				
 				double pWithReroll = ProbabilityCalculator.main(s, 1);
-				double pWithoutReroll = ProbabilityCalculator.main(s, 0);
+				double pWithoutReroll = ProbabilityCalculator.main(sTeam, 0);
 
 				this.probabilityResult.setText(Double.toString(Math
 						.round(pWithoutReroll * 100))
@@ -190,6 +197,7 @@ public class BloodBowlProbability extends Activity implements OnClickListener {
 
 		case R.id.clearList:
 			this.numberSequence.clear();
+			this.numberSequenceTeamReroll.clear();
 			this.sequenceViewer.setText("");
 			this.probabilityResult.setText("");
 			break;
@@ -211,6 +219,7 @@ public class BloodBowlProbability extends Activity implements OnClickListener {
 
 	private void updateSequence(int requiredRoll, BloodBowlDieReroll reroll) {
 		this.numberSequence.add(new BloodBowlDieRoll(requiredRoll, reroll));
+		this.numberSequenceTeamReroll.add(new BloodBowlDieRoll(requiredRoll, reroll));
 		// this.sequenceViewer.setText(numberSequence.toString());
 		this.updateSequenceDisplay();
 	}
@@ -219,9 +228,10 @@ public class BloodBowlProbability extends Activity implements OnClickListener {
 		this.sequenceViewer.setText(this.buildSequenceString());
 	}
 
-	private void addPersistingReroll(BloodBowlDieReroll r) {
+	private void addPersistingReroll(BloodBowlDieReroll r, BloodBowlDieReroll rTeam) {
 		// BloodBowlDieRoll newestRoll = this.numberSequence.getLast();
 		this.numberSequence.getLast().setReroll(r);
+		this.numberSequenceTeamReroll.getLast().setReroll(rTeam);
 		this.updateSequenceDisplay();
 	}
 

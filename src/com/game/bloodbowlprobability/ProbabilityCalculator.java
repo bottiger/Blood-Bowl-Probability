@@ -3,6 +3,8 @@ package com.game.bloodbowlprobability;
 import java.util.LinkedList;
 import java.util.List;
 
+import android.util.Log;
+
 public class ProbabilityCalculator
 {
 
@@ -52,15 +54,25 @@ public class ProbabilityCalculator
 			// if the roll includes an aditional reroll the team reroll
 			// should never be used.
 			//return seq[0].probability() * calculateProbability(rerolls, shortSeq);
-			return forkReroll(seq[0], seq, shortSeq, rerolls);
+			return forkReroll(seq[0], shortSeq, rerolls);
 		else
-			return seq[0].probability() * calculateProbability(rerolls, shortSeq) + (1 - seq[0].probability()) * calculateProbability(rerolls - 1, seq);
+		{
+			double first_roll = seq[0].probability();
+			double first_rest = calculateProbability(rerolls, shortSeq);
+			double second_roll = (1 - seq[0].probability());
+			double second_rest = calculateProbability(rerolls - 1, seq);
+			
+			double p_result = first_roll * first_rest 
+			+ second_roll * second_rest;
+			
+			return p_result;
+		}
 	}
 	
-	private static double forkReroll(BloodBowlDieRoll currentRoll, BloodBowlDieRoll[] allRolls, BloodBowlDieRoll[] futureRolls, int team_rerolls)
+	private static double forkReroll(BloodBowlDieRoll currentRoll, BloodBowlDieRoll[] futureRolls, int team_rerolls)
 	{
-		BloodBowlDieRoll[] allRolls2 = allRolls.clone();
-		allRolls2[0].probabilityWithReroll(true);
+		BloodBowlDieRoll[] futureRolls2 = futureRolls.clone();
+		futureRolls2[0].probabilityWithReroll(true);
 		
 		//return   currentRoll.probabilityWithoutReroll() * calculateProbability(team_rerolls, futureRolls)
 		//	   + currentRoll.probabilityWithReroll() * calculateProbability(team_rerolls, futureRolls2);
@@ -68,10 +80,11 @@ public class ProbabilityCalculator
 		double no_reroll_rest = calculateProbability(team_rerolls, futureRolls);
 		
 		double with_reroll = currentRoll.probabilityWithReroll();
-		double with_reroll_rest = calculateProbability(team_rerolls, allRolls2);
+		double with_reroll_rest = calculateProbability(team_rerolls, futureRolls2);
 		
-		return no_reroll * no_reroll_rest + (1 - no_reroll) * with_reroll_rest;
+		double p_result = no_reroll * no_reroll_rest + (1 - no_reroll) * (no_reroll * with_reroll_rest);
 		
-	
+		Log.d("no_reroll", no_reroll + ", " + no_reroll_rest + ", " + with_reroll + ", " + with_reroll_rest + ", " + p_result);
+		return p_result;
 	}
 }
