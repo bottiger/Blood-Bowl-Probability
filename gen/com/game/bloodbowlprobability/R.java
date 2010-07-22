@@ -19,10 +19,15 @@ public final class R {
         public static final int background=0x7f020000;
         public static final int bothdown=0x7f020001;
         public static final int icon=0x7f020002;
-        public static final int pow=0x7f020003;
-        public static final int pushed=0x7f020004;
-        public static final int skull=0x7f020005;
-        public static final int stumbles=0x7f020006;
+        public static final int minus_three_blocks=0x7f020003;
+        public static final int minus_two_blocks=0x7f020004;
+        public static final int one_block=0x7f020005;
+        public static final int pow=0x7f020006;
+        public static final int pushed=0x7f020007;
+        public static final int skull=0x7f020008;
+        public static final int stumbles=0x7f020009;
+        public static final int three_blocks=0x7f02000a;
+        public static final int two_blocks=0x7f02000b;
     }
     public static final class id {
         public static final int blockDiceAccept=0x7f060005;

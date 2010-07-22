@@ -48,11 +48,11 @@ public class BloodBowlProbability extends Activity implements OnClickListener {
 	private Button fivePlusButton;
 	private Button sixPlusButton;
 
-	private Button blockDiceTwoDown;
-	private Button blockDiceOneDown;
-	private Button blockDiceOne;
-	private Button blockDiceTwo;
-	private Button blockDiceThree;
+	private ImageButton blockDiceTwoDown;
+	private ImageButton blockDiceOneDown;
+	private ImageButton blockDiceOne;
+	private ImageButton blockDiceTwo;
+	private ImageButton blockDiceThree;
 
 	private Button rerollOneButton;
 	private Button rerollTwoButton;
@@ -89,13 +89,13 @@ public class BloodBowlProbability extends Activity implements OnClickListener {
 		this.fivePlusButton = (Button) this.findViewById(R.id.five_plus);
 		this.sixPlusButton = (Button) this.findViewById(R.id.six_plus);
 
-		this.blockDiceTwoDown = (Button) this
+		this.blockDiceTwoDown = (ImageButton) this
 				.findViewById(R.id.blockDiceTwoDown);
-		this.blockDiceOneDown = (Button) this
+		this.blockDiceOneDown = (ImageButton) this
 				.findViewById(R.id.blockDiceOneDown);
-		this.blockDiceOne = (Button) this.findViewById(R.id.blockDiceOne);
-		this.blockDiceTwo = (Button) this.findViewById(R.id.blockDiceTwo);
-		this.blockDiceThree = (Button) this.findViewById(R.id.blockDiceThree);
+		this.blockDiceOne = (ImageButton) this.findViewById(R.id.blockDiceOne);
+		this.blockDiceTwo = (ImageButton) this.findViewById(R.id.blockDiceTwo);
+		this.blockDiceThree = (ImageButton) this.findViewById(R.id.blockDiceThree);
 
 		this.rerollOneButton = (Button) this.findViewById(R.id.rerollOne);
 		this.rerollTwoButton = (Button) this.findViewById(R.id.rerollTwo);
@@ -397,9 +397,9 @@ public class BloodBowlProbability extends Activity implements OnClickListener {
 			if (reroll == this.rerollOne) {
 				this.appendColoredRoll(sb, diceRoll.toString(), "#00FF00");
 			} else if (reroll == this.rerollTwo) {
-				this.appendColoredRoll(sb, diceRoll.toString(), "#FAAFBE"); // red
+				this.appendColoredRoll(sb, diceRoll.toString(), "#79BAEC"); // blue
 			} else if (reroll == this.rerollThree) {
-				this.appendColoredRoll(sb, diceRoll.toString(), "#F75D59"); // blue
+				this.appendColoredRoll(sb, diceRoll.toString(), "#FAAFBE"); // red
 			} else if (reroll == this.rerollFour) {
 				this.appendColoredRoll(sb, diceRoll.toString(), "#FFFF00");
 			} else {

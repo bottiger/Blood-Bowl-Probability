@@ -28,10 +28,10 @@
 <string name="blockDiceTwo">2</string>
 <string name="blockDiceThree">3</string>
 
-<string name="rerollOne">Green</string>
-<string name="rerollTwo">Blue</string>
-<string name="rerollThree">Red</string>
-<string name="rerollFour">Yellow</string>
+<string name="rerollOne">Dodge</string>
+<string name="rerollTwo">Pick up</string>
+<string name="rerollThree">Throw</string>
+<string name="rerollFour">Other</string>
 <string name="rerollText">Rerolls ( Push after choosing a D6 roll)</string>
 <string name="blockDiceAccept">Accept</string>
 <string name="blockDiceCancel">Cancel</string>

@@ -50,30 +50,33 @@
 		android:orientation="horizontal" android:layout_width="fill_parent"
 		android:layout_height="wrap_content">
 
-		<Button android:id="@+id/blockDiceTwoDown"
+		<ImageButton android:id="@+id/blockDiceTwoDown"
 			android:layout_weight="1" android:layout_width="wrap_content"
 			android:layout_height="wrap_content" android:text="@string/blockDiceTwoDown"
-			android:layout_alignParentTop="true" android:layout_alignParentLeft="true">
-		</Button>
-		<Button android:id="@+id/blockDiceOneDown"
+			android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+			android:src="@drawable/minus_three_blocks">
+		</ImageButton>
+		<ImageButton android:id="@+id/blockDiceOneDown"
 			android:layout_weight="1" android:layout_width="wrap_content"
 			android:layout_height="wrap_content" android:text="@string/blockDiceOneDown"
-			android:layout_alignParentLeft="true">
-		</Button>
-		<Button android:id="@+id/blockDiceOne" android:layout_weight="1"
+			android:layout_alignParentLeft="true" android:src="@drawable/minus_two_blocks">
+		</ImageButton>
+		<ImageButton android:id="@+id/blockDiceOne" android:layout_weight="1"
 			android:layout_width="wrap_content" android:layout_height="wrap_content"
-			android:text="@string/blockDiceOne" android:layout_alignParentLeft="true">
-		</Button>
-		<Button android:id="@+id/blockDiceTwo" android:layout_weight="1"
+			android:text="@string/blockDiceOne" android:layout_alignParentLeft="true"
+			android:src="@drawable/one_block">
+		</ImageButton>
+		<ImageButton android:id="@+id/blockDiceTwo" android:layout_weight="1"
 			android:layout_width="wrap_content" android:layout_height="wrap_content"
-			android:text="@string/blockDiceTwo" android:layout_alignParentLeft="true">
-		</Button>
+			android:text="@string/blockDiceTwo" android:layout_alignParentLeft="true"
+			android:src="@drawable/two_blocks">
+		</ImageButton>
 
-		<Button android:id="@+id/blockDiceThree" android:layout_weight="1"
+		<ImageButton android:id="@+id/blockDiceThree" android:layout_weight="1"
 			android:layout_width="wrap_content" android:layout_height="wrap_content"
 			android:text="@string/blockDiceThree" android:layout_alignParentLeft="true"
-			android:layout_alignParentRight="true">
-		</Button>
+			android:layout_alignParentRight="true" android:src="@drawable/three_blocks">
+		</ImageButton>
 
 	</LinearLayout>
 	
