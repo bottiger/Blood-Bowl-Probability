@@ -32,11 +32,10 @@ public class BloodBowlBlockDieRoll extends AbstractDieRoll {
 			return 1 - p_fail;
 		} else {
 			// TODO test this
-			int failiure = (this.requiredRoll -1);
-			double p_fail = Math
-			.pow(1 - (failiure / this.dieSides),
-					Math.abs(this.diceNumber));
-			return 1 - p_fail;
+			int failiure = 7 - this.requiredRoll;
+			double p_fail = Math.pow((failiure / this.dieSides), Math
+					.abs(this.diceNumber)+1);
+			return p_fail;
 		}
 	}
 

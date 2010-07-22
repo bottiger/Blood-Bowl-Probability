@@ -145,8 +145,8 @@ public class BloodBowlProbability extends Activity implements OnClickListener {
 		clearButton.setOnClickListener(this);
 
 		colorButton(rerollOneButton, Color.GREEN);
-		colorButton(rerollTwoButton, Color.BLUE);
-		colorButton(rerollThreeButton, Color.RED);
+		colorButton(rerollTwoButton, Color.rgb(0x2B, 0x60, 0xDE)); // #2B60DE
+		colorButton(rerollThreeButton, Color.rgb(0xF6, 0x22, 0x17)); // F62217
 		colorButton(rerollFourButton, Color.YELLOW);
 
 	}
@@ -397,9 +397,9 @@ public class BloodBowlProbability extends Activity implements OnClickListener {
 			if (reroll == this.rerollOne) {
 				this.appendColoredRoll(sb, diceRoll.toString(), "#00FF00");
 			} else if (reroll == this.rerollTwo) {
-				this.appendColoredRoll(sb, diceRoll.toString(), "#0000FF");
+				this.appendColoredRoll(sb, diceRoll.toString(), "#FAAFBE"); // red
 			} else if (reroll == this.rerollThree) {
-				this.appendColoredRoll(sb, diceRoll.toString(), "#FF0000");
+				this.appendColoredRoll(sb, diceRoll.toString(), "#F75D59"); // blue
 			} else if (reroll == this.rerollFour) {
 				this.appendColoredRoll(sb, diceRoll.toString(), "#FFFF00");
 			} else {
