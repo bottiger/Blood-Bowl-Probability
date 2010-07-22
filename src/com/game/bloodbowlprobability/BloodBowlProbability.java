@@ -3,7 +3,9 @@ package com.game.bloodbowlprobability;
 import java.util.LinkedList;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Dialog;
+import android.content.DialogInterface;
 import android.graphics.PorterDuff;
 import android.graphics.Color;
 import android.graphics.PorterDuffColorFilter;
@@ -349,10 +351,25 @@ public class BloodBowlProbability extends Activity implements OnClickListener {
 	}
 
 	private void addPersistingReroll(BloodBowlDieReroll r, BloodBowlDieReroll rTeam) {
-		// BloodBowlDieRoll newestRoll = this.numberSequence.getLast();
-		this.numberSequence.getLast().setReroll(r);
-		this.numberSequenceTeamReroll.getLast().setReroll(rTeam);
-		this.updateSequenceDisplay();
+		if (!this.numberSequence.isEmpty())
+		{
+			this.numberSequence.getLast().setReroll(r);
+			this.numberSequenceTeamReroll.getLast().setReroll(rTeam);
+			this.updateSequenceDisplay();
+		}
+		else
+		{
+			AlertDialog.Builder builder = new AlertDialog.Builder(this);
+			builder.setMessage("Can not apply this reroll to any roll. Roll sequence is empty.")
+			       .setCancelable(false)
+			       .setNegativeButton("Ok", new DialogInterface.OnClickListener() {
+			           public void onClick(DialogInterface dialog, int id) {
+			                dialog.cancel();
+			           }
+			       });
+			AlertDialog alert = builder.create();
+			alert.show();
+		}
 	}
 
 	private void colorButton(Button b, int color) {

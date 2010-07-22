@@ -13,14 +13,16 @@ public final class R {
     public static final class color {
         public static final int active_button=0x7f050000;
         public static final int deactive_button=0x7f050001;
+        public static final int textColor=0x7f050002;
     }
     public static final class drawable {
-        public static final int bothdown=0x7f020000;
-        public static final int icon=0x7f020001;
-        public static final int pow=0x7f020002;
-        public static final int pushed=0x7f020003;
-        public static final int skull=0x7f020004;
-        public static final int stumbles=0x7f020005;
+        public static final int background=0x7f020000;
+        public static final int bothdown=0x7f020001;
+        public static final int icon=0x7f020002;
+        public static final int pow=0x7f020003;
+        public static final int pushed=0x7f020004;
+        public static final int skull=0x7f020005;
+        public static final int stumbles=0x7f020006;
     }
     public static final class id {
         public static final int blockDiceAccept=0x7f060005;

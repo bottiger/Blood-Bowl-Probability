@@ -35,4 +35,5 @@
 <string name="rerollText">Rerolls ( Push after choosing a D6 roll)</string>
 <string name="blockDiceAccept">Accept</string>
 <string name="blockDiceCancel">Cancel</string>
+<color name="textColor">#000</color>
 </resources>

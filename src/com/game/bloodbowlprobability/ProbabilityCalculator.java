@@ -29,7 +29,7 @@ public class ProbabilityCalculator
 			}
 		}
 
-		if (rerolls + action_rerolls == 0)
+		if (rerolls + action_rerolls <= 0)
 		{
 			for (int i = 0; i < length; i++)
 				//probability *= probSimple(seq[i]);

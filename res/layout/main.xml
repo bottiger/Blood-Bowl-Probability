@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:orientation="vertical" android:layout_width="fill_parent"
-	android:layout_height="fill_parent">
+	android:layout_height="fill_parent" android:background="@drawable/background">
 
 	<TextView android:id="@+id/noRerollText" android:layout_width="fill_parent"
-		android:layout_height="wrap_content" android:text="@string/noRerollText">
+		android:layout_height="wrap_content" android:text="@string/noRerollText"
+		android:textColor="@color/textColor">
 	</TextView>
 
 	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -42,7 +43,7 @@
 
 	<TextView android:id="@+id/blockDiceText"
 		android:layout_width="fill_parent" android:layout_height="wrap_content"
-		android:text="@string/blockDiceText">
+		android:text="@string/blockDiceText" android:textColor="@color/textColor">
 	</TextView>
 
 	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -78,7 +79,7 @@
 	
 	<TextView android:id="@+id/rerollText"
 		android:layout_width="fill_parent" android:layout_height="wrap_content"
-		android:text="@string/rerollText">
+		android:text="@string/rerollText" android:textColor="@color/textColor">
 	</TextView>
 
 	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -113,22 +114,22 @@
 		<TextView android:id="@+id/sequenceViewer"
 			android:layout_width="fill_parent" android:layout_height="wrap_content"
 			android:text="" android:textSize="20sp"
-			android:layout_alignParentTop="true" android:layout_alignParentLeft="true">
+			android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+			android:textColor="@color/textColor">
 		</TextView>
 
 		<TextView android:id="@+id/probabilityResult"
 			android:layout_width="fill_parent" android:layout_height="wrap_content"
 			android:text="" android:textSize="25sp"
 			android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
-			android:gravity="left" android:paddingTop="10sp">
+			android:gravity="left" android:paddingTop="10sp" android:textColor="@color/textColor">
 		</TextView>
 
 	</LinearLayout>
 
 	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 		android:orientation="horizontal" android:layout_width="fill_parent"
-		android:layout_height="fill_parent" android:layout_weight="1.5"
-		android:gravity="bottom">
+		android:layout_height="fill_parent" android:layout_weight="1.2">
 
 		<Button android:id="@+id/calculateProbability"
 			android:layout_weight="1" android:layout_width="fill_parent"
