@@ -19,7 +19,5 @@ public class BloodBowlDieReroll {
 	public void decrementReroll() {
 		this.reroll -= 1;
 	}
-	
-	
 
 }

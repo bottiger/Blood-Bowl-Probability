@@ -7,11 +7,11 @@
 		android:orientation="horizontal" android:layout_width="fill_parent"
 		android:layout_height="wrap_content" android:gravity="center">
 
-		<ImageButton android:id="@+id/blocDiePow"
+		<ImageButton android:id="@+id/blockDiePow"
 			android:layout_weight="1" android:src="@drawable/pow"
 			android:layout_width="wrap_content" android:layout_height="wrap_content" />
 
-		<ImageButton android:id="@+id/blocDieStumbles"
+		<ImageButton android:id="@+id/blockDieStumbles"
 			android:layout_weight="1" android:src="@drawable/stumbles"
 			android:layout_width="wrap_content" android:layout_height="wrap_content" />
 
@@ -25,11 +25,11 @@
 		android:orientation="horizontal" android:layout_width="fill_parent"
 		android:layout_height="wrap_content" android:gravity="center">
 
-		<ImageButton android:id="@+id/blocDieBothdown"
+		<ImageButton android:id="@+id/blockDieBothdown"
 			android:src="@drawable/bothdown"
 			android:layout_width="wrap_content" android:layout_height="wrap_content" />
 
-		<ImageButton android:id="@+id/blocDieSkull"
+		<ImageButton android:id="@+id/blockDieSkull"
 			android:src="@drawable/skull"
 			android:layout_width="wrap_content" android:layout_height="wrap_content" />
 

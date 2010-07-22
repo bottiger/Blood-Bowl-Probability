@@ -118,16 +118,17 @@
 
 		<TextView android:id="@+id/probabilityResult"
 			android:layout_width="fill_parent" android:layout_height="wrap_content"
-			android:text="" android:textSize="22sp"
+			android:text="" android:textSize="25sp"
 			android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
-			android:gravity="center">
+			android:gravity="left" android:paddingTop="10sp">
 		</TextView>
 
 	</LinearLayout>
 
 	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 		android:orientation="horizontal" android:layout_width="fill_parent"
-		android:layout_height="fill_parent" android:layout_weight="1">
+		android:layout_height="fill_parent" android:layout_weight="1.5"
+		android:gravity="bottom">
 
 		<Button android:id="@+id/calculateProbability"
 			android:layout_weight="1" android:layout_width="fill_parent"

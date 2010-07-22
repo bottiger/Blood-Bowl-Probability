@@ -8,20 +8,20 @@ import android.util.Log;
 public class ProbabilityCalculator
 {
 
-	public static double main (BloodBowlDieRoll[] rollSequence, int team_rerolls)
+	public static double main (DieRoll[] s, int team_rerolls)
 	{
 		
-		return calculateProbability(team_rerolls, rollSequence);
+		return calculateProbability(team_rerolls, s);
 
 	}
 
-	public static double calculateProbability (int rerolls, BloodBowlDieRoll[] seq)
+	public static double calculateProbability (int rerolls, DieRoll[] s)
 	{
 		double probability = 1.0;
-		int length = seq.length;
+		int length = s.length;
 		int action_rerolls = 0;
 		
-		for ( BloodBowlDieRoll d : seq)
+		for ( DieRoll d : s)
 		{
 			if (d.getReroll().canReroll())
 			{
@@ -33,34 +33,34 @@ public class ProbabilityCalculator
 		{
 			for (int i = 0; i < length; i++)
 				//probability *= probSimple(seq[i]);
-				probability *= seq[i].probability();
+				probability *= s[i].probability();
 
 			return probability;
 		}
 
 		if (length == 1)
 		{
-			if (seq[0].isReroll())
-				return 1.0 - Math.pow(1.0 - seq[0].probability(), 1);
+			if (s[0].isReroll())
+				return 1.0 - Math.pow(1.0 - s[0].probability(), 1);
 			else
-				return 1.0 - Math.pow(1.0 - seq[0].probability(), rerolls + 1);
+				return 1.0 - Math.pow(1.0 - s[0].probability(), rerolls + 1);
 		}
 			
-		BloodBowlDieRoll[] shortSeq = new BloodBowlDieRoll[length - 1];
+		DieRoll[] shortSeq = new DieRoll[length - 1];
 		for (int i = 1; i < length; i++)
-			shortSeq[i - 1] = seq[i];
+			shortSeq[i - 1] = s[i];
 
-		if (seq[0].isReroll())
+		if (s[0].isReroll())
 			// if the roll includes an aditional reroll the team reroll
 			// should never be used.
 			//return seq[0].probability() * calculateProbability(rerolls, shortSeq);
-			return forkReroll(seq[0], shortSeq, rerolls);
+			return forkReroll(s[0], shortSeq, rerolls);
 		else
 		{
-			double first_roll = seq[0].probability();
+			double first_roll = s[0].probability();
 			double first_rest = calculateProbability(rerolls, shortSeq);
-			double second_roll = (1 - seq[0].probability());
-			double second_rest = calculateProbability(rerolls - 1, seq);
+			double second_roll = (1 - s[0].probability());
+			double second_rest = calculateProbability(rerolls - 1, s);
 			
 			double p_result = first_roll * first_rest 
 			+ second_roll * second_rest;
@@ -69,9 +69,15 @@ public class ProbabilityCalculator
 		}
 	}
 	
-	private static double forkReroll(BloodBowlDieRoll currentRoll, BloodBowlDieRoll[] futureRolls, int team_rerolls)
+	private static double forkReroll(DieRoll currentRoll, DieRoll[] futureRolls, int team_rerolls)
 	{
-		BloodBowlDieRoll[] futureRolls2 = futureRolls.clone();
+		
+		int length = futureRolls.length;
+		
+		DieRoll[] futureRolls2 = new DieRoll[length];
+		for (int i = 0; i < length; i++)
+			futureRolls2[i] = futureRolls[i].copy();
+
 		futureRolls2[0].probabilityWithReroll(true);
 		
 		//return   currentRoll.probabilityWithoutReroll() * calculateProbability(team_rerolls, futureRolls)
