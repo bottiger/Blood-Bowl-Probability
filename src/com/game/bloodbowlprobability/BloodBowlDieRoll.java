@@ -17,8 +17,17 @@ public class BloodBowlDieRoll extends AbstractDieRoll  {
 	}
 
 	public BloodBowlDieRoll copy() {
+		
+		BloodBowlDieReroll reroll_copy;
 
-		BloodBowlDieReroll reroll_copy = new BloodBowlDieReroll(this.reroll.getReroll());
+		if (this.reroll.canReroll())
+		{
+			reroll_copy = new BloodBowlDieReroll(1);
+		}
+		else
+		{
+			reroll_copy = new BloodBowlDieReroll(0);
+		}
 		BloodBowlDieRoll copy = new BloodBowlDieRoll(this.requiredRoll, reroll_copy);
 
 		return copy;

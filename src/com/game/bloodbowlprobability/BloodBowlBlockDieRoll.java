@@ -57,8 +57,10 @@ public class BloodBowlBlockDieRoll extends AbstractDieRoll {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
+		
+		String diePlural = (this.diceNumber == 1) ? "Block die" : "Block dice";
 		int shownDiceNumber = (this.diceNumber >= 1) ? this.diceNumber : this.diceNumber-1;
-		return shownDiceNumber + " Block dice (" + (this.requiredRoll) + "+)";
+		return shownDiceNumber + " " + diePlural + " (" + (this.requiredRoll) + "+)";
 	}
 
 	@Override

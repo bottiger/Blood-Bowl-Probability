@@ -2,7 +2,7 @@
 
 # config
 itr = 100000;
-seq = [3]
+seq = [6, 6]
 start_rerolls = 2
 
 # const

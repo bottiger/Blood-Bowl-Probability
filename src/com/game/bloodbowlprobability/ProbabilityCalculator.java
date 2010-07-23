@@ -76,9 +76,15 @@ public class ProbabilityCalculator
 		
 		DieRoll[] futureRolls2 = new DieRoll[length];
 		for (int i = 0; i < length; i++)
+		{
 			futureRolls2[i] = futureRolls[i].copy();
-
-		futureRolls2[0].probabilityWithReroll(true);
+			if (currentRoll.getReroll() == futureRolls[i].getReroll())
+			{
+				futureRolls2[i].probabilityWithReroll(true);
+			}
+		}
+			
+		//futureRolls2[0].probabilityWithReroll(true);
 		
 		//return   currentRoll.probabilityWithoutReroll() * calculateProbability(team_rerolls, futureRolls)
 		//	   + currentRoll.probabilityWithReroll() * calculateProbability(team_rerolls, futureRolls2);
