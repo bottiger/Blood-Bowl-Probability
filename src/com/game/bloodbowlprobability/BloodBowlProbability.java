@@ -20,11 +20,11 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 
 public class BloodBowlProbability extends Activity implements OnClickListener {
-	
+
 	private Dialog dialog;
 	private int blockDieLikehood = 0;
 	private int blockDiceNumber = 0;
-	
+
 	private int blockDiePowPushed;
 	private int blockDieStumblesPushed;
 	private int blockDiePushedPushed;
@@ -32,16 +32,19 @@ public class BloodBowlProbability extends Activity implements OnClickListener {
 	private int blockDieSkullPushed;
 
 	private BloodBowlDieReroll required_roll = new BloodBowlDieReroll(0);
+	
+	/*
 	private BloodBowlDieReroll rerollOne = new BloodBowlDieReroll(1);
 	private BloodBowlDieReroll rerollTwo = new BloodBowlDieReroll(1);;
 	private BloodBowlDieReroll rerollThree = new BloodBowlDieReroll(1);
 	private BloodBowlDieReroll rerollFour = new BloodBowlDieReroll(1);
-	
+
 	private BloodBowlDieReroll rerollOneTeam = new BloodBowlDieReroll(1);
 	private BloodBowlDieReroll rerollTwoTeam = new BloodBowlDieReroll(1);;
 	private BloodBowlDieReroll rerollThreeTeam = new BloodBowlDieReroll(1);
 	private BloodBowlDieReroll rerollFourTeam = new BloodBowlDieReroll(1);
-
+	*/
+	
 	private Button twoPlusButton;
 	private Button threePlusButton;
 	private Button fourPlusButton;
@@ -58,17 +61,17 @@ public class BloodBowlProbability extends Activity implements OnClickListener {
 	private Button rerollTwoButton;
 	private Button rerollThreeButton;
 	private Button rerollFourButton;
-	
+
 	private ImageButton blockDiePow;
 	private ImageButton blockDieStumbles;
 	private ImageButton blockDiePushed;
 	private ImageButton blockDieBothdown;
 	private ImageButton blockDieSkull;
-	
+
 	private Button blockDiceAccept;
 	private Button blockDiceCancel;
 
-	/*private Button calculateButton;*/
+	/* private Button calculateButton; */
 	private Button clearButton;
 
 	private TextView sequenceViewer;
@@ -76,6 +79,16 @@ public class BloodBowlProbability extends Activity implements OnClickListener {
 
 	private LinkedList<DieRoll> numberSequence = new LinkedList<DieRoll>();
 	private LinkedList<DieRoll> numberSequenceTeamReroll = new LinkedList<DieRoll>();
+	//private DieRoll[] rerollList = new DieRoll[4];
+	private BloodBowlDieReroll[] rerollList = {new BloodBowlDieReroll(1),
+			new BloodBowlDieReroll(1),
+			new BloodBowlDieReroll(1),
+			new BloodBowlDieReroll(1)};
+	
+	private BloodBowlDieReroll[] rerollListTeam = {new BloodBowlDieReroll(1),
+			new BloodBowlDieReroll(1),
+			new BloodBowlDieReroll(1),
+			new BloodBowlDieReroll(1)};
 
 	/** Called when the activity is first created. */
 	@Override
@@ -95,22 +108,14 @@ public class BloodBowlProbability extends Activity implements OnClickListener {
 				.findViewById(R.id.blockDiceOneDown);
 		this.blockDiceOne = (ImageButton) this.findViewById(R.id.blockDiceOne);
 		this.blockDiceTwo = (ImageButton) this.findViewById(R.id.blockDiceTwo);
-		this.blockDiceThree = (ImageButton) this.findViewById(R.id.blockDiceThree);
+		this.blockDiceThree = (ImageButton) this
+				.findViewById(R.id.blockDiceThree);
 
 		this.rerollOneButton = (Button) this.findViewById(R.id.rerollOne);
 		this.rerollTwoButton = (Button) this.findViewById(R.id.rerollTwo);
 		this.rerollThreeButton = (Button) this.findViewById(R.id.rerollThree);
 		this.rerollFourButton = (Button) this.findViewById(R.id.rerollFour);
-		
-		/*
-		this.blockDiePow = (Button) this.findViewById(R.id.blockDiePow);
-		this.blockDieStumbles = (Button) this.findViewById(R.id.blockDieStumbles);
-		this.blockDiePushed = (Button) this.findViewById(R.id.blockDiePushed);
-		this.blockDieBothdown = (Button) this.findViewById(R.id.blockDieBothdown);
-		this.blockDieSkull = (Button) this.findViewById(R.id.blockDieSkull);
-		*/
 
-		/*this.calculateButton = (Button) findViewById(R.id.calculateProbability);*/
 		this.clearButton = (Button) findViewById(R.id.clearList);
 
 		this.sequenceViewer = (TextView) findViewById(R.id.sequenceViewer);
@@ -132,50 +137,78 @@ public class BloodBowlProbability extends Activity implements OnClickListener {
 		rerollTwoButton.setOnClickListener(this);
 		rerollThreeButton.setOnClickListener(this);
 		rerollFourButton.setOnClickListener(this);
-		
-		/*
-		blockDiePow.setOnClickListener(this);
-		blockDieStumbles.setOnClickListener(this);
-		blockDiePushed.setOnClickListener(this);
-		blockDieBothdown.setOnClickListener(this);
-		blockDieSkull.setOnClickListener(this);
-		*/
 
-		/*calculateButton.setOnClickListener(this);*/
 		clearButton.setOnClickListener(this);
 
 		colorButton(rerollOneButton, Color.GREEN);
 		colorButton(rerollTwoButton, Color.rgb(0x2B, 0x60, 0xDE)); // #2B60DE
 		colorButton(rerollThreeButton, Color.rgb(0xF6, 0x22, 0x17)); // F62217
 		colorButton(rerollFourButton, Color.YELLOW);
-		
-		this.resetBlockDieButtons();
 
+		this.resetBlockDieButtons();
+		
+		final DataTransporter dt = (DataTransporter) getLastNonConfigurationInstance();
+		if (dt != null)
+		{
+			this.restoreState(dt);
+		}
+		//this.restoreState((DataTransporter) getLastNonConfigurationInstance());
+
+	}
+
+	private void restoreState(DataTransporter dt) {
+		if (!dt.equals(null)) {
+			this.numberSequence = dt.getList();
+			this.numberSequenceTeamReroll = dt.getTeamList();
+			this.rerollList = dt.getRerollList();
+			this.rerollListTeam = dt.getRerollListTeam();
+			this.dialog = dt.getDialog();
+			
+			this.updateSequenceDisplay();
+			this.calculateProbability();
+		}
+	}
+
+	@Override
+	public Object onRetainNonConfigurationInstance() {
+		DataTransporter dt = new DataTransporter();
+		dt.setList(this.numberSequence);
+		dt.setTeamList(this.numberSequenceTeamReroll);
+		dt.setDialog(this.dialog);
+		dt.setRerollList(this.rerollList);
+		dt.setRerollListTeam(this.rerollListTeam);
+
+		return dt;
 	}
 
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.two_plus:
-			this.updateSequence(new BloodBowlDieRoll(2, new BloodBowlDieReroll(0)));
+			this.updateSequence(new BloodBowlDieRoll(2, new BloodBowlDieReroll(
+					0)));
 			// Toast.makeText(BloodBowlProbability.this, "Button 2 " +
 			// numberSequence.toString(), Toast.LENGTH_SHORT).show();
 			break;
 
 		case R.id.three_plus:
-			this.updateSequence(new BloodBowlDieRoll(3, new BloodBowlDieReroll(0)));
+			this.updateSequence(new BloodBowlDieRoll(3, new BloodBowlDieReroll(
+					0)));
 			break;
 
 		case R.id.four_plus:
-			this.updateSequence(new BloodBowlDieRoll(4, new BloodBowlDieReroll(0)));
+			this.updateSequence(new BloodBowlDieRoll(4, new BloodBowlDieReroll(
+					0)));
 			break;
 
 		case R.id.five_plus:
-			this.updateSequence(new BloodBowlDieRoll(5, new BloodBowlDieReroll(0)));
+			this.updateSequence(new BloodBowlDieRoll(5, new BloodBowlDieReroll(
+					0)));
 			break;
 
 		case R.id.six_plus:
-			this.updateSequence(new BloodBowlDieRoll(6, new BloodBowlDieReroll(0)));
+			this.updateSequence(new BloodBowlDieRoll(6, new BloodBowlDieReroll(
+					0)));
 			break;
 
 		case R.id.blockDiceTwoDown:
@@ -199,82 +232,81 @@ public class BloodBowlProbability extends Activity implements OnClickListener {
 			break;
 
 		case R.id.rerollOne:
-			addPersistingReroll(this.rerollOne, this.rerollOneTeam);
+			addPersistingReroll(this.rerollList[0], this.rerollListTeam[0]);
 			break;
 
 		case R.id.rerollTwo:
-			addPersistingReroll(this.rerollTwo, this.rerollTwoTeam);
+			addPersistingReroll(this.rerollList[1], this.rerollListTeam[1]);
 			break;
 
 		case R.id.rerollThree:
-			addPersistingReroll(this.rerollThree, this.rerollThreeTeam);
+			addPersistingReroll(this.rerollList[2], this.rerollListTeam[2]);
 			break;
 
 		case R.id.rerollFour:
-			addPersistingReroll(this.rerollFour, this.rerollFourTeam);
+			addPersistingReroll(this.rerollList[3], this.rerollListTeam[3]);
 			break;
-			
+
 		case R.id.blockDiePow:
 			this.blockDiePowPushed = (this.blockDiePowPushed == 1) ? 0 : 1;
 			updateBlockDie(blockDiePow, blockDiePowPushed, 1);
-			break;	
-			
+			break;
+
 		case R.id.blockDieStumbles:
-			this.blockDieStumblesPushed = (this.blockDieStumblesPushed == 1) ? 0 : 1;
+			this.blockDieStumblesPushed = (this.blockDieStumblesPushed == 1) ? 0
+					: 1;
 			updateBlockDie(blockDieStumbles, blockDieStumblesPushed, 1);
 			break;
-			
+
 		case R.id.blockDiePushed:
-			this.blockDiePushedPushed = (this.blockDiePushedPushed == 1) ? 0 : 1;
+			this.blockDiePushedPushed = (this.blockDiePushedPushed == 1) ? 0
+					: 1;
 			updateBlockDie(blockDiePushed, blockDiePushedPushed, 2);
 			break;
-			
+
 		case R.id.blockDieBothdown:
-			this.blockDieBothdownPushed = (this.blockDieBothdownPushed == 1) ? 0 : 1;
+			this.blockDieBothdownPushed = (this.blockDieBothdownPushed == 1) ? 0
+					: 1;
 			updateBlockDie(blockDieBothdown, blockDieBothdownPushed, 1);
 			break;
-			
+
 		case R.id.blockDieSkull:
 			this.blockDiePowPushed = (this.blockDiePowPushed == 1) ? 0 : 1;
 			updateBlockDie(blockDieSkull, blockDieSkullPushed, 1);
 			break;
-			
+
 		case R.id.blockDiceAccept:
-			BloodBowlBlockDieRoll blockDie = new BloodBowlBlockDieRoll(7 - this.blockDieLikehood, this.blockDiceNumber);
+			BloodBowlBlockDieRoll blockDie = new BloodBowlBlockDieRoll(
+					7 - this.blockDieLikehood, this.blockDiceNumber);
 			// TODO fix me
 			this.updateSequence(blockDie);
 			dialog.dismiss();
 			this.blockDieLikehood = 0;
 			this.resetBlockDieButtons();
 			break;
-			
+
 		case R.id.blockDiceCancel:
 			this.blockDieLikehood = 0;
 			this.dialog.dismiss();
 			this.resetBlockDieButtons();
 			break;
 		/*
-		case R.id.calculateProbability:
-
-			if (!this.numberSequence.isEmpty()) {
-				DieRoll[] s = (DieRoll[]) this.numberSequence
-						.toArray(new DieRoll[this.numberSequence
-								.size()]);
-				
-				DieRoll[] sTeam = (DieRoll[]) this.numberSequenceTeamReroll
-				.toArray(new DieRoll[this.numberSequenceTeamReroll
-						.size()]);
-				
-				double pWithReroll = ProbabilityCalculator.main(s, 1);
-				double pWithoutReroll = ProbabilityCalculator.main(sTeam, 0);
-
-				this.probabilityResult.setText("Direct roll: " + Double.toString(Math
-						.round(pWithoutReroll * 100))
-						+ "%.\nUsing a Team reroll: "
-						+ Double.toString(Math.round(pWithReroll * 100)) + "%");
-			}
-			break;
-			*/
+		 * case R.id.calculateProbability:
+		 * 
+		 * if (!this.numberSequence.isEmpty()) { DieRoll[] s = (DieRoll[])
+		 * this.numberSequence .toArray(new DieRoll[this.numberSequence
+		 * .size()]);
+		 * 
+		 * DieRoll[] sTeam = (DieRoll[]) this.numberSequenceTeamReroll
+		 * .toArray(new DieRoll[this.numberSequenceTeamReroll .size()]);
+		 * 
+		 * double pWithReroll = ProbabilityCalculator.main(s, 1); double
+		 * pWithoutReroll = ProbabilityCalculator.main(sTeam, 0);
+		 * 
+		 * this.probabilityResult.setText("Direct roll: " + Double.toString(Math
+		 * .round(pWithoutReroll * 100)) + "%.\nUsing a Team reroll: " +
+		 * Double.toString(Math.round(pWithReroll * 100)) + "%"); } break;
+		 */
 
 		case R.id.clearList:
 			this.numberSequence.clear();
@@ -283,22 +315,20 @@ public class BloodBowlProbability extends Activity implements OnClickListener {
 			this.probabilityResult.setText("");
 			break;
 		}
-		
+
 		this.calculateProbability();
 
 	}
 
-	private int updateBlockDie(ImageButton blockDie, int blockDiePushed, int value) {
-		
+	private int updateBlockDie(ImageButton blockDie, int blockDiePushed,
+			int value) {
+
 		this.blockDieLikehood += (blockDiePushed == 1) ? value : -value;
-		
-		if (blockDiePushed == 1)
-		{
+
+		if (blockDiePushed == 1) {
 			colorButton(blockDie, Color.RED);
 			return 0;
-		}
-		else
-		{
+		} else {
 			colorButton(blockDie, Color.WHITE);
 			return 1;
 		}
@@ -307,44 +337,52 @@ public class BloodBowlProbability extends Activity implements OnClickListener {
 	private void chooseBlockDice(int blockDiceNumber) {
 		// Context mContext = getApplicationContext();
 		// Dialog dialog = new Dialog(mContext);
-		//BlockDiceChooser.main(this);
-		
+		// BlockDiceChooser.main(this);
+
 		this.blockDiceNumber = blockDiceNumber;
-		
+
 		this.dialog = new Dialog(this);
 		this.dialog.setOwnerActivity(this);
 
 		this.dialog.setContentView(R.layout.block_dice_chooser);
 		this.dialog.setTitle("Choose your goal(s)");
 		this.dialog.setCancelable(true);
-		
+
 		this.blockDiePow = (ImageButton) dialog.findViewById(R.id.blockDiePow);
-		this.blockDieStumbles = (ImageButton) dialog.findViewById(R.id.blockDieStumbles);
-		this.blockDiePushed = (ImageButton) dialog.findViewById(R.id.blockDiePushed);
-		this.blockDieBothdown = (ImageButton) dialog.findViewById(R.id.blockDieBothdown);
-		this.blockDieSkull = (ImageButton) dialog.findViewById(R.id.blockDieSkull);
-		
-		this.blockDiceAccept = (Button) dialog.findViewById(R.id.blockDiceAccept);
-		this.blockDiceCancel = (Button) dialog.findViewById(R.id.blockDiceCancel);
+		this.blockDieStumbles = (ImageButton) dialog
+				.findViewById(R.id.blockDieStumbles);
+		this.blockDiePushed = (ImageButton) dialog
+				.findViewById(R.id.blockDiePushed);
+		this.blockDieBothdown = (ImageButton) dialog
+				.findViewById(R.id.blockDieBothdown);
+		this.blockDieSkull = (ImageButton) dialog
+				.findViewById(R.id.blockDieSkull);
+
+		this.blockDiceAccept = (Button) dialog
+				.findViewById(R.id.blockDiceAccept);
+		this.blockDiceCancel = (Button) dialog
+				.findViewById(R.id.blockDiceCancel);
 
 		this.blockDiePow.setOnClickListener(this);
 		this.blockDieStumbles.setOnClickListener(this);
 		this.blockDiePushed.setOnClickListener(this);
 		this.blockDieBothdown.setOnClickListener(this);
 		this.blockDieSkull.setOnClickListener(this);
-		
+
 		this.blockDiceAccept.setOnClickListener(this);
 		this.blockDiceCancel.setOnClickListener(this);
-		
+
 		// TODO fix this
 		this.updateBlockDie(this.blockDiePow, this.blockDiePowPushed, 1);
-		this.updateBlockDie(this.blockDieStumbles, this.blockDieStumblesPushed, 1);
+		this.updateBlockDie(this.blockDieStumbles, this.blockDieStumblesPushed,
+				1);
 		this.updateBlockDie(this.blockDiePushed, this.blockDiePushedPushed, 0);
-		this.updateBlockDie(this.blockDieBothdown, this.blockDieBothdownPushed, 0);
+		this.updateBlockDie(this.blockDieBothdown, this.blockDieBothdownPushed,
+				0);
 		this.updateBlockDie(this.blockDieSkull, this.blockDieSkullPushed, 0);
-		
+
 		this.dialog.show();
-		
+
 	}
 
 	private void updateSequence(DieRoll dieRoll) {
@@ -358,23 +396,24 @@ public class BloodBowlProbability extends Activity implements OnClickListener {
 		this.sequenceViewer.setText(this.buildSequenceString());
 	}
 
-	private void addPersistingReroll(BloodBowlDieReroll r, BloodBowlDieReroll rTeam) {
-		if (!this.numberSequence.isEmpty())
-		{
+	private void addPersistingReroll(BloodBowlDieReroll r,
+			BloodBowlDieReroll rTeam) {
+		if (!this.numberSequence.isEmpty()) {
 			this.numberSequence.getLast().setReroll(r);
 			this.numberSequenceTeamReroll.getLast().setReroll(rTeam);
 			this.updateSequenceDisplay();
-		}
-		else
-		{
+		} else {
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);
-			builder.setMessage("Can not apply this reroll to any roll. Roll sequence is empty.")
-			       .setCancelable(false)
-			       .setNegativeButton("Ok", new DialogInterface.OnClickListener() {
-			           public void onClick(DialogInterface dialog, int id) {
-			                dialog.cancel();
-			           }
-			       });
+			builder
+					.setMessage(
+							"Can not apply this reroll to any roll. Roll sequence is empty.")
+					.setCancelable(false).setNegativeButton("Ok",
+							new DialogInterface.OnClickListener() {
+								public void onClick(DialogInterface dialog,
+										int id) {
+									dialog.cancel();
+								}
+							});
 			AlertDialog alert = builder.create();
 			alert.show();
 		}
@@ -386,7 +425,7 @@ public class BloodBowlProbability extends Activity implements OnClickListener {
 				PorterDuff.Mode.SRC_ATOP);
 		d.setColorFilter(filter);
 	}
-	
+
 	private void colorButton(ImageButton b, int color) {
 		Drawable d = b.getBackground();
 		PorterDuffColorFilter filter = new PorterDuffColorFilter(color,
@@ -402,13 +441,13 @@ public class BloodBowlProbability extends Activity implements OnClickListener {
 			int required_roll = diceRoll.getRequiredRoll();
 			BloodBowlDieReroll reroll = diceRoll.getReroll();
 
-			if (reroll == this.rerollOne) {
+			if (reroll == this.rerollList[0]) {
 				this.appendColoredRoll(sb, diceRoll.toString(), "#00FF00");
-			} else if (reroll == this.rerollTwo) {
+			} else if (reroll == this.rerollList[1]) {
 				this.appendColoredRoll(sb, diceRoll.toString(), "#79BAEC"); // blue
-			} else if (reroll == this.rerollThree) {
+			} else if (reroll == this.rerollList[2]) {
 				this.appendColoredRoll(sb, diceRoll.toString(), "#FAAFBE"); // red
-			} else if (reroll == this.rerollFour) {
+			} else if (reroll == this.rerollList[3]) {
 				this.appendColoredRoll(sb, diceRoll.toString(), "#FFFF00");
 			} else {
 				sb.append(diceRoll.toString());
@@ -425,7 +464,7 @@ public class BloodBowlProbability extends Activity implements OnClickListener {
 		s.append(r);
 		s.append("</font>, ");
 	}
-	
+
 	private void resetBlockDieButtons() {
 		this.blockDiePowPushed = 1;
 		this.blockDieStumblesPushed = 1;
@@ -433,22 +472,20 @@ public class BloodBowlProbability extends Activity implements OnClickListener {
 		this.blockDieBothdownPushed = 0;
 		this.blockDieSkullPushed = 0;
 	}
-	
+
 	private void calculateProbability() {
 		if (!this.numberSequence.isEmpty()) {
 			DieRoll[] s = (DieRoll[]) this.numberSequence
-					.toArray(new DieRoll[this.numberSequence
-							.size()]);
-			
+					.toArray(new DieRoll[this.numberSequence.size()]);
+
 			DieRoll[] sTeam = (DieRoll[]) this.numberSequenceTeamReroll
-			.toArray(new DieRoll[this.numberSequenceTeamReroll
-					.size()]);
-			
+					.toArray(new DieRoll[this.numberSequenceTeamReroll.size()]);
+
 			double pWithReroll = ProbabilityCalculator.main(s, 1);
 			double pWithoutReroll = ProbabilityCalculator.main(sTeam, 0);
 
-			this.probabilityResult.setText("Direct roll: " + Double.toString(Math
-					.round(pWithoutReroll * 100))
+			this.probabilityResult.setText("Direct roll: "
+					+ Double.toString(Math.round(pWithoutReroll * 100))
 					+ "%.\nUsing a Team reroll: "
 					+ Double.toString(Math.round(pWithReroll * 100)) + "%");
 		}
