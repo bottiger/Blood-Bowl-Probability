@@ -43,8 +43,7 @@ public final class R {
         public static final int blockDiePushed=0x7f060002;
         public static final int blockDieSkull=0x7f060004;
         public static final int blockDieStumbles=0x7f060001;
-        public static final int calculateProbability=0x7f06001a;
-        public static final int clearList=0x7f06001b;
+        public static final int clearList=0x7f06001a;
         public static final int five_plus=0x7f06000b;
         public static final int four_plus=0x7f06000a;
         public static final int noRerollText=0x7f060007;

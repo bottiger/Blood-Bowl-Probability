@@ -134,12 +134,7 @@
 		android:orientation="horizontal" android:layout_width="fill_parent"
 		android:layout_height="fill_parent" android:layout_weight="1.2">
 
-		<Button android:id="@+id/calculateProbability"
-			android:layout_weight="1" android:layout_width="fill_parent"
-			android:layout_height="fill_parent" android:text="@string/calculateProbability">
-		</Button>
-
-		<Button android:id="@+id/clearList" android:layout_weight="3"
+		<Button android:id="@+id/clearList" android:layout_weight="1"
 			android:layout_width="fill_parent" android:layout_height="fill_parent"
 			android:text="@string/clearList">
 		</Button>

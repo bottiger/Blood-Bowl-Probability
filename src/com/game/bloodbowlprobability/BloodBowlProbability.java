@@ -68,7 +68,7 @@ public class BloodBowlProbability extends Activity implements OnClickListener {
 	private Button blockDiceAccept;
 	private Button blockDiceCancel;
 
-	private Button calculateButton;
+	/*private Button calculateButton;*/
 	private Button clearButton;
 
 	private TextView sequenceViewer;
@@ -110,7 +110,7 @@ public class BloodBowlProbability extends Activity implements OnClickListener {
 		this.blockDieSkull = (Button) this.findViewById(R.id.blockDieSkull);
 		*/
 
-		this.calculateButton = (Button) findViewById(R.id.calculateProbability);
+		/*this.calculateButton = (Button) findViewById(R.id.calculateProbability);*/
 		this.clearButton = (Button) findViewById(R.id.clearList);
 
 		this.sequenceViewer = (TextView) findViewById(R.id.sequenceViewer);
@@ -141,7 +141,7 @@ public class BloodBowlProbability extends Activity implements OnClickListener {
 		blockDieSkull.setOnClickListener(this);
 		*/
 
-		calculateButton.setOnClickListener(this);
+		/*calculateButton.setOnClickListener(this);*/
 		clearButton.setOnClickListener(this);
 
 		colorButton(rerollOneButton, Color.GREEN);
@@ -251,7 +251,7 @@ public class BloodBowlProbability extends Activity implements OnClickListener {
 			this.dialog.dismiss();
 			this.resetBlockDieButtons();
 			break;
-
+		/*
 		case R.id.calculateProbability:
 
 			if (!this.numberSequence.isEmpty()) {
@@ -272,6 +272,7 @@ public class BloodBowlProbability extends Activity implements OnClickListener {
 						+ Double.toString(Math.round(pWithReroll * 100)) + "%");
 			}
 			break;
+			*/
 
 		case R.id.clearList:
 			this.numberSequence.clear();
@@ -280,6 +281,8 @@ public class BloodBowlProbability extends Activity implements OnClickListener {
 			this.probabilityResult.setText("");
 			break;
 		}
+		
+		this.calculateProbability();
 
 	}
 
@@ -424,6 +427,26 @@ public class BloodBowlProbability extends Activity implements OnClickListener {
 		this.blockDiePushedPushed = 0;
 		this.blockDieBothdownPushed = 0;
 		this.blockDieSkullPushed = 0;
+	}
+	
+	private void calculateProbability() {
+		if (!this.numberSequence.isEmpty()) {
+			DieRoll[] s = (DieRoll[]) this.numberSequence
+					.toArray(new DieRoll[this.numberSequence
+							.size()]);
+			
+			DieRoll[] sTeam = (DieRoll[]) this.numberSequenceTeamReroll
+			.toArray(new DieRoll[this.numberSequenceTeamReroll
+					.size()]);
+			
+			double pWithReroll = ProbabilityCalculator.main(s, 1);
+			double pWithoutReroll = ProbabilityCalculator.main(sTeam, 0);
+
+			this.probabilityResult.setText("Direct roll: " + Double.toString(Math
+					.round(pWithoutReroll * 100))
+					+ "%.\nUsing a Team reroll: "
+					+ Double.toString(Math.round(pWithReroll * 100)) + "%");
+		}
 	}
 
 }
