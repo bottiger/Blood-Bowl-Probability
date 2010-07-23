@@ -25,11 +25,11 @@ public class BloodBowlProbability extends Activity implements OnClickListener {
 	private int blockDieLikehood = 0;
 	private int blockDiceNumber = 0;
 	
-	private int blockDiePowPushed = 0;
-	private int blockDieStumblesPushed = 0;
-	private int blockDiePushedPushed = 0;
-	private int blockDieBothdownPushed = 0;
-	private int blockDieSkullPushed = 0;
+	private int blockDiePowPushed;
+	private int blockDieStumblesPushed;
+	private int blockDiePushedPushed;
+	private int blockDieBothdownPushed;
+	private int blockDieSkullPushed;
 
 	private BloodBowlDieReroll required_roll = new BloodBowlDieReroll(0);
 	private BloodBowlDieReroll rerollOne = new BloodBowlDieReroll(1);
@@ -148,6 +148,8 @@ public class BloodBowlProbability extends Activity implements OnClickListener {
 		colorButton(rerollTwoButton, Color.rgb(0x2B, 0x60, 0xDE)); // #2B60DE
 		colorButton(rerollThreeButton, Color.rgb(0xF6, 0x22, 0x17)); // F62217
 		colorButton(rerollFourButton, Color.YELLOW);
+		
+		this.resetBlockDieButtons();
 
 	}
 
@@ -213,28 +215,28 @@ public class BloodBowlProbability extends Activity implements OnClickListener {
 			break;
 			
 		case R.id.blockDiePow:
-			blockDiePowPushed = updateBlockDie(blockDiePow, blockDiePowPushed);
-			this.blockDieLikehood += (blockDiePowPushed == 1) ? 1 : -1;
+			this.blockDiePowPushed = (this.blockDiePowPushed == 1) ? 0 : 1;
+			updateBlockDie(blockDiePow, blockDiePowPushed, 1);
 			break;	
 			
 		case R.id.blockDieStumbles:
-			blockDieStumblesPushed = updateBlockDie(blockDieStumbles, blockDieStumblesPushed);
-			this.blockDieLikehood += (blockDieStumblesPushed == 1) ? 1 : -1;
+			this.blockDieStumblesPushed = (this.blockDieStumblesPushed == 1) ? 0 : 1;
+			updateBlockDie(blockDieStumbles, blockDieStumblesPushed, 1);
 			break;
 			
 		case R.id.blockDiePushed:
-			blockDiePushedPushed = updateBlockDie(blockDiePushed, blockDiePushedPushed);
-			this.blockDieLikehood += (blockDiePushedPushed == 1) ? 2 : -2;
+			this.blockDiePushedPushed = (this.blockDiePushedPushed == 1) ? 0 : 1;
+			updateBlockDie(blockDiePushed, blockDiePushedPushed, 2);
 			break;
 			
 		case R.id.blockDieBothdown:
-			blockDieBothdownPushed = updateBlockDie(blockDieBothdown, blockDieBothdownPushed);
-			this.blockDieLikehood += (blockDieBothdownPushed == 1) ? 1 : -1;
+			this.blockDieBothdownPushed = (this.blockDieBothdownPushed == 1) ? 0 : 1;
+			updateBlockDie(blockDieBothdown, blockDieBothdownPushed, 1);
 			break;
 			
 		case R.id.blockDieSkull:
-			blockDieSkullPushed = updateBlockDie(blockDieSkull, blockDieSkullPushed);
-			this.blockDieLikehood += (blockDieSkullPushed == 1) ? 1 : -1;
+			this.blockDiePowPushed = (this.blockDiePowPushed == 1) ? 0 : 1;
+			updateBlockDie(blockDieSkull, blockDieSkullPushed, 1);
 			break;
 			
 		case R.id.blockDiceAccept:
@@ -286,15 +288,18 @@ public class BloodBowlProbability extends Activity implements OnClickListener {
 
 	}
 
-	private int updateBlockDie(ImageButton blockDie, int blockDiePushed) {
+	private int updateBlockDie(ImageButton blockDie, int blockDiePushed, int value) {
+		
+		this.blockDieLikehood += (blockDiePushed == 1) ? value : -value;
+		
 		if (blockDiePushed == 1)
 		{
-			colorButton(blockDie, Color.WHITE);
+			colorButton(blockDie, Color.RED);
 			return 0;
 		}
 		else
 		{
-			colorButton(blockDie, Color.RED);
+			colorButton(blockDie, Color.WHITE);
 			return 1;
 		}
 	}
@@ -332,11 +337,11 @@ public class BloodBowlProbability extends Activity implements OnClickListener {
 		this.blockDiceCancel.setOnClickListener(this);
 		
 		// TODO fix this
-		this.updateBlockDie(this.blockDiePow, 1);
-		this.updateBlockDie(this.blockDieStumbles, 1);
-		this.updateBlockDie(this.blockDiePushed, 1);
-		this.updateBlockDie(this.blockDieBothdown, 1);
-		this.updateBlockDie(this.blockDieSkull, 1);
+		this.updateBlockDie(this.blockDiePow, this.blockDiePowPushed, 1);
+		this.updateBlockDie(this.blockDieStumbles, this.blockDieStumblesPushed, 1);
+		this.updateBlockDie(this.blockDiePushed, this.blockDiePushedPushed, 0);
+		this.updateBlockDie(this.blockDieBothdown, this.blockDieBothdownPushed, 0);
+		this.updateBlockDie(this.blockDieSkull, this.blockDieSkullPushed, 0);
 		
 		this.dialog.show();
 		
@@ -422,8 +427,8 @@ public class BloodBowlProbability extends Activity implements OnClickListener {
 	}
 	
 	private void resetBlockDieButtons() {
-		this.blockDiePowPushed = 0;
-		this.blockDieStumblesPushed = 0;
+		this.blockDiePowPushed = 1;
+		this.blockDieStumblesPushed = 1;
 		this.blockDiePushedPushed = 0;
 		this.blockDieBothdownPushed = 0;
 		this.blockDieSkullPushed = 0;
