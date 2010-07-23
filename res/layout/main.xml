@@ -132,10 +132,11 @@
 
 	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 		android:orientation="horizontal" android:layout_width="fill_parent"
-		android:layout_height="fill_parent" android:layout_weight="1.2">
+		android:layout_height="fill_parent" android:layout_weight="1.2"
+		android:gravity="bottom">
 
 		<Button android:id="@+id/clearList" android:layout_weight="1"
-			android:layout_width="fill_parent" android:layout_height="fill_parent"
+			android:layout_width="fill_parent" android:layout_height="wrap_content"
 			android:text="@string/clearList">
 		</Button>
 
