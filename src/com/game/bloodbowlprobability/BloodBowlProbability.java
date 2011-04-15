@@ -328,7 +328,7 @@ public class BloodBowlProbability extends Activity implements OnClickListener {
 		this.dialog.setOwnerActivity(this);
 
 		this.dialog.setContentView(R.layout.block_dice_chooser);
-		this.dialog.setTitle("Choose your goal(s)");
+		this.dialog.setTitle("Choose your goals.");
 		this.dialog.setCancelable(true);
 
 		this.blockDiePow = (ImageButton) dialog.findViewById(R.id.blockDiePow);

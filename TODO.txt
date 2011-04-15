@@ -1,0 +1,6 @@
+- Shake to reset
+- Send feedback
+- Help dialog
+- Choose skills
+- TODO dialog
+- Rotate wallpaper in ladscape mode
