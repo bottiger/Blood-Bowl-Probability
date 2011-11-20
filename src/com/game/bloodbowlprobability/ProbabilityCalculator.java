@@ -15,52 +15,62 @@ public class ProbabilityCalculator
 
 	}
 
-	public static double calculateProbability (int rerolls, DieRoll[] s)
+	public static double calculateProbability (int rerolls, DieRoll[] dieRolls)
 	{
 		double probability = 1.0;
-		int length = s.length;
+		int numOfDie = dieRolls.length;
 		int action_rerolls = 0;
 		
-		for ( DieRoll d : s)
+		for ( DieRoll dice : dieRolls)
 		{
-			if (d.getReroll().canReroll())
+			if (dice.getReroll().canReroll())
 			{
 				action_rerolls++;
 			}
 		}
 
+		/*
+		 *  If there are no rerolls we just return the sum of the dice probabilities
+		 */
 		if (rerolls + action_rerolls <= 0)
 		{
-			for (int i = 0; i < length; i++)
-				//probability *= probSimple(seq[i]);
-				probability *= s[i].probability();
+			for (int i = 0; i < numOfDie; i++)
+				probability *= dieRolls[i].probability();
 
 			return probability;
 		}
 
-		if (length == 1)
+		if (numOfDie == 1)
 		{
-			if (s[0].isReroll())
-				return 1.0 - Math.pow(1.0 - s[0].probability(), 1);
+			if (dieRolls[0].isReroll())
+				return 1.0 - Math.pow(1.0 - dieRolls[0].probability(), 1);
 			else
-				return 1.0 - Math.pow(1.0 - s[0].probability(), rerolls + 1);
+				return 1.0 - Math.pow(1.0 - dieRolls[0].probability(), rerolls + 1);
 		}
 			
-		DieRoll[] shortSeq = new DieRoll[length - 1];
-		for (int i = 1; i < length; i++)
-			shortSeq[i - 1] = s[i];
+		DieRoll[] shortSeq = new DieRoll[numOfDie - 1];
+		for (int i = 1; i < numOfDie; i++)
+			shortSeq[i - 1] = dieRolls[i];
 
-		if (s[0].isReroll())
+		if (dieRolls[0].isReroll())
 			// if the roll includes an aditional reroll the team reroll
 			// should never be used.
 			//return seq[0].probability() * calculateProbability(rerolls, shortSeq);
-			return forkReroll(s[0], shortSeq, rerolls);
+			return forkReroll(dieRolls[0], shortSeq, rerolls);
 		else
 		{
-			double first_roll = s[0].probability();
+			double first_roll = dieRolls[0].probability();
 			double first_rest = calculateProbability(rerolls, shortSeq);
-			double second_roll = (1 - s[0].probability());
-			double second_rest = calculateProbability(rerolls - 1, s);
+			double second_roll = 0;
+			double second_rest = 0;
+			
+			/*
+			 * Only calculate the alternative probability if the dice can be rerolled
+			 */
+			if (dieRolls[0].getReroll().canReroll() || rerolls > 0) {
+				second_roll = (1 - dieRolls[0].probability());
+				second_rest = calculateProbability(rerolls - 1, dieRolls);
+			}
 			
 			double p_result = first_roll * first_rest 
 			+ second_roll * second_rest;
