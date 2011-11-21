@@ -18,10 +18,12 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class BloodBowlProbability extends Activity implements OnClickListener {
 
 	private Dialog dialog;
+	private AlertDialog alterDialog;
 	private int blockDieLikehood = 0;
 	private int blockDiceNumber = 0;
 
@@ -56,6 +58,10 @@ public class BloodBowlProbability extends Activity implements OnClickListener {
 	private ImageButton blockDiceOne;
 	private ImageButton blockDiceTwo;
 	private ImageButton blockDiceThree;
+	
+	private Button twoDSixButton;
+	private Button dSixtyEigthButton;
+	private String selectedButtonHack;
 
 	private Button rerollOneButton;
 	private Button rerollTwoButton;
@@ -101,6 +107,9 @@ public class BloodBowlProbability extends Activity implements OnClickListener {
 		this.fourPlusButton = (Button) this.findViewById(R.id.four_plus);
 		this.fivePlusButton = (Button) this.findViewById(R.id.five_plus);
 		this.sixPlusButton = (Button) this.findViewById(R.id.six_plus);
+		
+		this.twoDSixButton = (Button) this.findViewById(R.id.two_d_six);
+		this.dSixtyEigthButton = (Button) this.findViewById(R.id.d_sixty_eigth);
 
 		this.blockDiceTwoDown = (ImageButton) this
 				.findViewById(R.id.blockDiceTwoDown);
@@ -111,10 +120,10 @@ public class BloodBowlProbability extends Activity implements OnClickListener {
 		this.blockDiceThree = (ImageButton) this
 				.findViewById(R.id.blockDiceThree);
 
-		this.rerollOneButton = (Button) this.findViewById(R.id.rerollOne);
-		this.rerollTwoButton = (Button) this.findViewById(R.id.rerollTwo);
-		this.rerollThreeButton = (Button) this.findViewById(R.id.rerollThree);
-		this.rerollFourButton = (Button) this.findViewById(R.id.rerollFour);
+		this.rerollOneButton = (Button) this.findViewById(R.id.reroll_one);
+		this.rerollTwoButton = (Button) this.findViewById(R.id.reroll_two);
+		this.rerollThreeButton = (Button) this.findViewById(R.id.reroll_three);
+		this.rerollFourButton = (Button) this.findViewById(R.id.reroll_four);
 
 		this.clearButton = (Button) findViewById(R.id.clearList);
 
@@ -126,6 +135,9 @@ public class BloodBowlProbability extends Activity implements OnClickListener {
 		fourPlusButton.setOnClickListener(this);
 		fivePlusButton.setOnClickListener(this);
 		sixPlusButton.setOnClickListener(this);
+		
+		twoDSixButton.setOnClickListener(this);
+		dSixtyEigthButton.setOnClickListener(this);
 
 		blockDiceTwoDown.setOnClickListener(this);
 		blockDiceOneDown.setOnClickListener(this);
@@ -185,29 +197,29 @@ public class BloodBowlProbability extends Activity implements OnClickListener {
 	public void onClick(View v) {
 		switch (v.getId()) {
 		case R.id.two_plus:
-			this.updateSequence(new BloodBowlDieRoll(2, new BloodBowlDieReroll(
+			this.updateSequence(new GenericDieRoll(2, new BloodBowlDieReroll(
 					0)));
 			// Toast.makeText(BloodBowlProbability.this, "Button 2 " +
 			// numberSequence.toString(), Toast.LENGTH_SHORT).show();
 			break;
 
 		case R.id.three_plus:
-			this.updateSequence(new BloodBowlDieRoll(3, new BloodBowlDieReroll(
+			this.updateSequence(new GenericDieRoll(3, new BloodBowlDieReroll(
 					0)));
 			break;
 
 		case R.id.four_plus:
-			this.updateSequence(new BloodBowlDieRoll(4, new BloodBowlDieReroll(
+			this.updateSequence(new GenericDieRoll(4, new BloodBowlDieReroll(
 					0)));
 			break;
 
 		case R.id.five_plus:
-			this.updateSequence(new BloodBowlDieRoll(5, new BloodBowlDieReroll(
+			this.updateSequence(new GenericDieRoll(5, new BloodBowlDieReroll(
 					0)));
 			break;
 
 		case R.id.six_plus:
-			this.updateSequence(new BloodBowlDieRoll(6, new BloodBowlDieReroll(
+			this.updateSequence(new GenericDieRoll(6, new BloodBowlDieReroll(
 					0)));
 			break;
 
@@ -230,20 +242,30 @@ public class BloodBowlProbability extends Activity implements OnClickListener {
 		case R.id.blockDiceThree:
 			this.chooseBlockDice(3);
 			break;
+			
+		case R.id.two_d_six:
+			this.selectedButtonHack = "12";
+			this.chooseNumber(12); //FIXME
+			break;
+			
+		case R.id.d_sixty_eigth:
+			this.selectedButtonHack = "68";
+			this.chooseNumber(68); //FIXME
+			break;
 
-		case R.id.rerollOne:
+		case R.id.reroll_one:
 			addPersistingReroll(this.rerollList[0], this.rerollListTeam[0]);
 			break;
 
-		case R.id.rerollTwo:
+		case R.id.reroll_two:
 			addPersistingReroll(this.rerollList[1], this.rerollListTeam[1]);
 			break;
 
-		case R.id.rerollThree:
+		case R.id.reroll_three:
 			addPersistingReroll(this.rerollList[2], this.rerollListTeam[2]);
 			break;
 
-		case R.id.rerollFour:
+		case R.id.reroll_four:
 			addPersistingReroll(this.rerollList[3], this.rerollListTeam[3]);
 			break;
 
@@ -316,6 +338,37 @@ public class BloodBowlProbability extends Activity implements OnClickListener {
 			return 1;
 		}
 	}
+	
+	private void chooseNumber(int upperLimit) {
+		LinkedList<String> numbers = new LinkedList<String>();
+		int lowerLimit = upperLimit == 12 ? 2 : 1;
+		for (Integer i=upperLimit; i >= lowerLimit; i--)
+			numbers.add(i.toString());
+		
+		//CharSequence[] items = {"Red", "Green", "Blue"};
+		final CharSequence[] items = numbers.toArray(new CharSequence[numbers.size()]);
+
+		
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		builder.setTitle("Pick a required roll");
+		builder.setItems(items, new DialogInterface.OnClickListener() {
+		    public void onClick(DialogInterface dialog, int item) {
+		        //Toast.makeText(getApplicationContext(), items[item], Toast.LENGTH_SHORT).show();
+		    	int minRoll = Integer.parseInt(items[item].toString());
+		    	DieRoll dr = null;
+		    	if (BloodBowlProbability.this.selectedButtonHack == "12") {
+		    		dr = new TwoDSix(minRoll, new BloodBowlDieReroll(0));
+		    	} else {
+		    		dr = new DSixtyEigth(minRoll, new BloodBowlDieReroll(0));
+		    	}
+	    		BloodBowlProbability.this.updateSequence(dr);
+	    		BloodBowlProbability.this.calculateProbability(); // FIXME why do I need this?
+		    }
+		});
+		this.alterDialog = builder.create();
+		this.alterDialog.show();
+		//AlertDialog alert = builder.create();
+	}
 
 	private void chooseBlockDice(int blockDiceNumber) {
 		// Context mContext = getApplicationContext();
@@ -368,9 +421,10 @@ public class BloodBowlProbability extends Activity implements OnClickListener {
 
 	}
 
-	private void updateSequence(DieRoll dieRoll) {
+	void updateSequence(DieRoll dieRoll) {
 		this.numberSequence.add(dieRoll);
-		this.numberSequenceTeamReroll.add(dieRoll.copy());
+		DieRoll newRoll = dieRoll.copy();
+		this.numberSequenceTeamReroll.add(newRoll);
 		// this.sequenceViewer.setText(numberSequence.toString());
 		this.updateSequenceDisplay();
 	}

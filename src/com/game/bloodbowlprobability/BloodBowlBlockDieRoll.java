@@ -4,16 +4,19 @@ public class BloodBowlBlockDieRoll extends AbstractDieRoll {
 
 	private final double dieSides = 6.0;
 	private final int diceNumber;
-	private int requiredRoll;
 	private double singleDieSucces;
 
 	public BloodBowlBlockDieRoll(int minRoll, int diceNumber) {
-
-		this.requiredRoll = minRoll;
+		super(minRoll);
 		this.diceNumber = diceNumber;
 		this.singleDieSucces = ((this.dieSides + 1) - this.requiredRoll);
 	}
+	
+	public BloodBowlBlockDieRoll newInstance(BloodBowlDieReroll reroll_copy) {
+		return new BloodBowlBlockDieRoll(this.requiredRoll, this.diceNumber);
+	}
 
+	/*
 	@Override
 	public BloodBowlBlockDieRoll copy() {
 		BloodBowlBlockDieRoll copy = new BloodBowlBlockDieRoll(
@@ -22,6 +25,7 @@ public class BloodBowlBlockDieRoll extends AbstractDieRoll {
 		return copy;
 
 	}
+	*/
 
 	@Override
 	public double probability() {

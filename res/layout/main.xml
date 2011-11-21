@@ -80,32 +80,54 @@
 
 	</LinearLayout>
 	
-	<TextView android:id="@+id/rerollText"
+	<TextView android:id="@+id/multiDieText"
 		android:layout_width="fill_parent" android:layout_height="wrap_content"
-		android:text="@string/rerollText" android:textColor="@color/textColor">
+		android:text="@string/multiDieText" android:textColor="@color/textColor">
+	</TextView>
+	
+	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+		android:orientation="horizontal" android:layout_width="fill_parent"
+		android:layout_height="wrap_content">
+
+		<Button android:id="@+id/two_d_six" android:layout_weight="1"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:text="@string/two_d_six" android:layout_alignParentTop="true"
+			android:layout_alignParentLeft="true">
+		</Button>
+		<Button android:id="@+id/d_sixty_eigth" android:layout_weight="1"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:text="@string/d_sixty_eigth" android:layout_alignParentTop="true"
+			android:layout_toRightOf="@+id/two_d_six">
+		</Button>
+
+	</LinearLayout>
+	
+	<TextView android:id="@+id/reroll_text"
+		android:layout_width="fill_parent" android:layout_height="wrap_content"
+		android:text="@string/reroll_text" android:textColor="@color/textColor">
 	</TextView>
 
 	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 		android:orientation="horizontal" android:layout_width="fill_parent"
 		android:layout_height="wrap_content">
 
-		<Button android:id="@+id/rerollOne"
+		<Button android:id="@+id/reroll_one"
 			android:layout_weight="1" android:layout_width="wrap_content"
-			android:layout_height="wrap_content" android:text="@string/rerollOne"
+			android:layout_height="wrap_content" android:text="@string/reroll_one"
 			android:layout_alignParentTop="true" android:layout_alignParentLeft="true">
 		</Button>
-		<Button android:id="@+id/rerollTwo"
+		<Button android:id="@+id/reroll_two"
 			android:layout_weight="1" android:layout_width="wrap_content"
-			android:layout_height="wrap_content" android:text="@string/rerollTwo"
+			android:layout_height="wrap_content" android:text="@string/reroll_two"
 			android:layout_alignParentLeft="true">
 		</Button>
-		<Button android:id="@+id/rerollThree" android:layout_weight="1"
+		<Button android:id="@+id/reroll_three" android:layout_weight="1"
 			android:layout_width="wrap_content" android:layout_height="wrap_content"
-			android:text="@string/rerollThree" android:layout_alignParentLeft="true">
+			android:text="@string/reroll_three" android:layout_alignParentLeft="true">
 		</Button>
-		<Button android:id="@+id/rerollFour" android:layout_weight="1"
+		<Button android:id="@+id/reroll_four" android:layout_weight="1"
 			android:layout_width="wrap_content" android:layout_height="wrap_content"
-			android:text="@string/rerollFour" android:layout_alignParentLeft="true">
+			android:text="@string/reroll_four" android:layout_alignParentLeft="true">
 		</Button>
 
 	</LinearLayout>
