@@ -99,6 +99,11 @@
 			android:text="@string/d_sixty_eigth" android:layout_alignParentTop="true"
 			android:layout_toRightOf="@+id/two_d_six">
 		</Button>
+		<Button android:id="@+id/d_three" android:layout_weight="1"
+			android:layout_width="wrap_content" android:layout_height="wrap_content"
+			android:text="@string/d_three" android:layout_alignParentTop="true"
+			android:layout_toRightOf="@+id/two_sixty_eigth">
+		</Button>
 
 	</LinearLayout>
 	

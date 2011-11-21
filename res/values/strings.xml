@@ -38,5 +38,6 @@
 <color name="textColor">#FFF</color>
 <string name="two_d_six">2D6</string>
 <string name="d_sixty_eigth">D68</string>
-<string name="multiDieText">Multiple Die</string>
+<string name="multiDieText">Other Die</string>
+<string name="d_three">D3</string>
 </resources>

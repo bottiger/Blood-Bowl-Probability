@@ -43,24 +43,26 @@ public final class R {
         public static final int blockDiePushed=0x7f060002;
         public static final int blockDieSkull=0x7f060004;
         public static final int blockDieStumbles=0x7f060001;
-        public static final int clearList=0x7f06001d;
+        public static final int clearList=0x7f06001f;
         public static final int d_sixty_eigth=0x7f060015;
+        public static final int d_three=0x7f060016;
         public static final int five_plus=0x7f06000b;
         public static final int four_plus=0x7f06000a;
         public static final int multiDieText=0x7f060013;
         public static final int noRerollText=0x7f060007;
-        public static final int probabilityResult=0x7f06001c;
-        public static final int rerollText=0x7f06001e;
-        public static final int reroll_four=0x7f06001a;
-        public static final int reroll_one=0x7f060017;
-        public static final int reroll_text=0x7f060016;
-        public static final int reroll_three=0x7f060019;
-        public static final int reroll_two=0x7f060018;
-        public static final int sequenceViewer=0x7f06001b;
+        public static final int probabilityResult=0x7f06001e;
+        public static final int rerollText=0x7f060020;
+        public static final int reroll_four=0x7f06001c;
+        public static final int reroll_one=0x7f060019;
+        public static final int reroll_text=0x7f060018;
+        public static final int reroll_three=0x7f06001b;
+        public static final int reroll_two=0x7f06001a;
+        public static final int sequenceViewer=0x7f06001d;
         public static final int six_plus=0x7f06000c;
         public static final int three_plus=0x7f060009;
         public static final int two_d_six=0x7f060014;
         public static final int two_plus=0x7f060008;
+        public static final int two_sixty_eigth=0x7f060017;
     }
     public static final class layout {
         public static final int block_dice_chooser=0x7f030000;
@@ -79,6 +81,7 @@ public final class R {
         public static final int calculateProbability=0x7f040006;
         public static final int clearList=0x7f040007;
         public static final int d_sixty_eigth=0x7f040017;
+        public static final int d_three=0x7f040019;
         public static final int five_plus=0x7f040004;
         public static final int four_plus=0x7f040003;
         public static final int multiDieText=0x7f040018;

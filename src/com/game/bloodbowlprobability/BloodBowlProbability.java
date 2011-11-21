@@ -61,6 +61,7 @@ public class BloodBowlProbability extends Activity implements OnClickListener {
 	
 	private Button twoDSixButton;
 	private Button dSixtyEigthButton;
+	private Button dThreeButton;
 	private String selectedButtonHack;
 
 	private Button rerollOneButton;
@@ -110,6 +111,7 @@ public class BloodBowlProbability extends Activity implements OnClickListener {
 		
 		this.twoDSixButton = (Button) this.findViewById(R.id.two_d_six);
 		this.dSixtyEigthButton = (Button) this.findViewById(R.id.d_sixty_eigth);
+		this.dThreeButton = (Button) this.findViewById(R.id.d_three);
 
 		this.blockDiceTwoDown = (ImageButton) this
 				.findViewById(R.id.blockDiceTwoDown);
@@ -138,6 +140,7 @@ public class BloodBowlProbability extends Activity implements OnClickListener {
 		
 		twoDSixButton.setOnClickListener(this);
 		dSixtyEigthButton.setOnClickListener(this);
+		dThreeButton.setOnClickListener(this);
 
 		blockDiceTwoDown.setOnClickListener(this);
 		blockDiceOneDown.setOnClickListener(this);
@@ -252,6 +255,11 @@ public class BloodBowlProbability extends Activity implements OnClickListener {
 			this.selectedButtonHack = "68";
 			this.chooseNumber(68); //FIXME
 			break;
+			
+		case R.id.d_three:
+			this.selectedButtonHack = "3";
+			this.chooseNumber(3);
+			break;
 
 		case R.id.reroll_one:
 			addPersistingReroll(this.rerollList[0], this.rerollListTeam[0]);
@@ -341,7 +349,7 @@ public class BloodBowlProbability extends Activity implements OnClickListener {
 	
 	private void chooseNumber(int upperLimit) {
 		LinkedList<String> numbers = new LinkedList<String>();
-		int lowerLimit = upperLimit == 12 ? 2 : 1;
+		int lowerLimit = 2;
 		for (Integer i=upperLimit; i >= lowerLimit; i--)
 			numbers.add(i.toString());
 		
@@ -356,10 +364,13 @@ public class BloodBowlProbability extends Activity implements OnClickListener {
 		        //Toast.makeText(getApplicationContext(), items[item], Toast.LENGTH_SHORT).show();
 		    	int minRoll = Integer.parseInt(items[item].toString());
 		    	DieRoll dr = null;
-		    	if (BloodBowlProbability.this.selectedButtonHack == "12") {
+		    	String buttonHack = BloodBowlProbability.this.selectedButtonHack;
+		    	if (buttonHack == "12") {
 		    		dr = new TwoDSix(minRoll, new BloodBowlDieReroll(0));
-		    	} else {
+		    	} else if (buttonHack == "68")  {
 		    		dr = new DSixtyEigth(minRoll, new BloodBowlDieReroll(0));
+		    	} else {
+		    		dr = new DThree(minRoll, new BloodBowlDieReroll(0));
 		    	}
 	    		BloodBowlProbability.this.updateSequence(dr);
 	    		BloodBowlProbability.this.calculateProbability(); // FIXME why do I need this?
@@ -444,7 +455,7 @@ public class BloodBowlProbability extends Activity implements OnClickListener {
 			AlertDialog.Builder builder = new AlertDialog.Builder(this);
 			builder
 					.setMessage(
-							"Can not apply this reroll to any roll. Roll sequence is empty.")
+							"The roll sequence is empty.")
 					.setCancelable(false).setNegativeButton("Ok",
 							new DialogInterface.OnClickListener() {
 								public void onClick(DialogInterface dialog,
