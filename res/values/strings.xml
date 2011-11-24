@@ -20,7 +20,7 @@
 
 <color name="active_button">#00FF00</color>
 <color name="deactive_button">#FF0000</color>
-<string name="noRerollText">Plain D6 (without rerolls)</string>
+<string name="noRerollText">Plain D6</string>
 <string name="blockDiceText">Block Dice</string>
 <string name="blockDiceTwoDown">-3</string>
 <string name="blockDiceOneDown">-2</string>
@@ -32,7 +32,7 @@
 <string name="reroll_two">Sure hands</string>
 <string name="reroll_three">Sure feet</string>
 <string name="reroll_four">Other</string>
-<string name="reroll_text">Rerolls ( Select after choosing a D6 roll)</string>
+<string name="reroll_text">Rerolls ( Select after choosing a dice roll)</string>
 <string name="blockDiceAccept">Accept</string>
 <string name="blockDiceCancel">Cancel</string>
 <color name="textColor">#FFF</color>
