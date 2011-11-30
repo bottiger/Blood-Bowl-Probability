@@ -349,7 +349,7 @@ public class BloodBowlProbability extends Activity implements OnClickListener {
 	
 	private void chooseNumber(int upperLimit) {
 		LinkedList<String> numbers = new LinkedList<String>();
-		int lowerLimit = 2;
+		int lowerLimit = upperLimit == 12 ? 3 : 2;
 		for (Integer i=upperLimit; i >= lowerLimit; i--)
 			numbers.add(i.toString());
 		

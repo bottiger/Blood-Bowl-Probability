@@ -29,7 +29,7 @@ public class TwoDSix extends MultiDieRoll {
 			triangleLenght = ((maximumRoll+1)-this.requiredRoll);
 			succesfulOutcomes = triangleArea(triangleLenght);
 		} else {
-			triangleLenght = this.requiredRoll-1;
+			triangleLenght = this.requiredRoll-2;
 			succesfulOutcomes = possibleCombination-triangleArea(triangleLenght);
 		}
 		double res = succesfulOutcomes/possibleCombination;
