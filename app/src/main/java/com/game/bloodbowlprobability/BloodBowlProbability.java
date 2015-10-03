@@ -15,6 +15,8 @@ import android.text.Html;
 import android.text.Spanned;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
@@ -101,6 +103,11 @@ public class BloodBowlProbability extends Activity implements OnClickListener {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+
+		//Remove title bar
+		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
+
+
 		setContentView(R.layout.main);
 
 		this.twoPlusButton = (Button) this.findViewById(R.id.two_plus);
