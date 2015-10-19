@@ -3,21 +3,21 @@
 
     <TextView
         android:id="@+id/reroll_text"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/reroll_text"
         android:textColor="@color/textColor" />
 
     <LinearLayout
         android:orientation="horizontal"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <Button
             android:id="@+id/reroll_one"
             android:layout_weight="1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="@string/reroll_one">
         </Button>
 
@@ -25,7 +25,7 @@
             android:id="@+id/reroll_two"
             android:layout_weight="1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="@string/reroll_two">
         </Button>
 
@@ -33,7 +33,7 @@
             android:id="@+id/reroll_three"
             android:layout_weight="1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="@string/reroll_three" >
         </Button>
 
@@ -41,7 +41,7 @@
             android:id="@+id/reroll_four"
             android:layout_weight="1"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:text="@string/reroll_four" >
         </Button>
 

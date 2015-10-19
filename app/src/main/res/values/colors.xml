@@ -2,6 +2,10 @@
 <resources>
     <color name="primary_dark_material_light">#dddddd</color>
 
+    <color name="primary">#179917</color>
+    <color name="primary_dark">#005613</color>
+    <color name="accent">#005613</color>
+
     <color name="active_button">#00FF00</color>
     <color name="deactive_button">#FF0000</color>
 
