@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:id="@+id/blockDiceText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/blockDiceText"
+        android:textColor="@color/textColor" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <ImageButton
+            android:id="@+id/blockDiceTwoDown"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/blockDiceTwoDown"
+            android:src="@drawable/minus_three_blocks">
+        </ImageButton>
+
+        <ImageButton
+            android:id="@+id/blockDiceOneDown"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/blockDiceOneDown"
+            android:src="@drawable/minus_two_blocks">
+        </ImageButton>
+
+        <ImageButton
+            android:id="@+id/blockDiceOne"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/blockDiceOne"
+            android:src="@drawable/one_block">
+        </ImageButton>
+
+        <ImageButton
+            android:id="@+id/blockDiceTwo"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/blockDiceTwo"
+            android:src="@drawable/two_blocks">
+        </ImageButton>
+
+        <ImageButton
+            android:id="@+id/blockDiceThree"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/blockDiceThree"
+            android:src="@drawable/three_blocks">
+        </ImageButton>
+
+    </LinearLayout>
+
+</merge>

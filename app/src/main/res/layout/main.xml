@@ -7,169 +7,54 @@
 	android:background="@drawable/background"
 	android:padding="5dp">
 
-	<TextView android:id="@+id/noRerollText" android:layout_width="fill_parent"
-		android:layout_height="wrap_content" android:text="@string/noRerollText"
-		android:textColor="@color/textColor">
-	</TextView>
+    <include layout="@layout/plaind6" />
 
-	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-		android:orientation="horizontal" android:layout_width="fill_parent"
-		android:layout_height="wrap_content">
+    <include layout="@layout/block_dice" />
 
-		<Button android:id="@+id/two_plus" android:layout_weight="1"
-			android:layout_width="wrap_content" android:layout_height="wrap_content"
-			android:text="@string/two_plus" android:layout_alignParentTop="true"
-			android:layout_alignParentLeft="true">
-		</Button>
-		<Button android:id="@+id/three_plus" android:layout_weight="1"
-			android:layout_width="wrap_content" android:layout_height="wrap_content"
-			android:text="@string/three_plus" android:layout_alignParentTop="true"
-			android:layout_toRightOf="@+id/two_plus">
-		</Button>
-		<Button android:id="@+id/four_plus" android:layout_weight="1"
-			android:layout_width="wrap_content" android:layout_height="wrap_content"
-			android:text="@string/four_plus" android:layout_alignParentTop="true"
-			android:layout_toRightOf="@+id/three_plus">
-		</Button>
-		<Button android:id="@+id/five_plus" android:layout_weight="1"
-			android:layout_width="wrap_content" android:layout_height="wrap_content"
-			android:text="@string/five_plus" android:layout_alignParentTop="true"
-			android:layout_toRightOf="@+id/four_plus">
-		</Button>
+    <include layout="@layout/other_dice" />
 
-		<Button android:id="@+id/six_plus" android:layout_weight="1"
-			android:layout_width="wrap_content" android:layout_height="wrap_content"
-			android:text="@string/six_plus" android:layout_alignParentTop="true"
-			android:layout_alignParentRight="true">
-		</Button>
+    <include layout="@layout/rerolls" />
 
-	</LinearLayout>
-
-	<TextView android:id="@+id/blockDiceText"
-		android:layout_width="fill_parent" android:layout_height="wrap_content"
-		android:text="@string/blockDiceText" android:textColor="@color/textColor">
-	</TextView>
-
-	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-		android:orientation="horizontal" android:layout_width="fill_parent"
-		android:layout_height="wrap_content">
-
-		<ImageButton android:id="@+id/blockDiceTwoDown"
-			android:layout_weight="1" android:layout_width="wrap_content"
-			android:layout_height="wrap_content" android:text="@string/blockDiceTwoDown"
-			android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
-			android:src="@drawable/minus_three_blocks">
-		</ImageButton>
-		<ImageButton android:id="@+id/blockDiceOneDown"
-			android:layout_weight="1" android:layout_width="wrap_content"
-			android:layout_height="wrap_content" android:text="@string/blockDiceOneDown"
-			android:layout_alignParentLeft="true" android:src="@drawable/minus_two_blocks">
-		</ImageButton>
-		<ImageButton android:id="@+id/blockDiceOne" android:layout_weight="1"
-			android:layout_width="wrap_content" android:layout_height="wrap_content"
-			android:text="@string/blockDiceOne" android:layout_alignParentLeft="true"
-			android:src="@drawable/one_block">
-		</ImageButton>
-		<ImageButton android:id="@+id/blockDiceTwo" android:layout_weight="1"
-			android:layout_width="wrap_content" android:layout_height="wrap_content"
-			android:text="@string/blockDiceTwo" android:layout_alignParentLeft="true"
-			android:src="@drawable/two_blocks">
-		</ImageButton>
-
-		<ImageButton android:id="@+id/blockDiceThree" android:layout_weight="1"
-			android:layout_width="wrap_content" android:layout_height="wrap_content"
-			android:text="@string/blockDiceThree" android:layout_alignParentLeft="true"
-			android:layout_alignParentRight="true" android:src="@drawable/three_blocks">
-		</ImageButton>
-
-	</LinearLayout>
-	
-	<TextView android:id="@+id/multiDieText"
-		android:layout_width="fill_parent" android:layout_height="wrap_content"
-		android:text="@string/multiDieText" android:textColor="@color/textColor">
-	</TextView>
-	
-	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-		android:orientation="horizontal" android:layout_width="fill_parent"
-		android:layout_height="wrap_content">
-
-		<Button android:id="@+id/two_d_six" android:layout_weight="1"
-			android:layout_width="wrap_content" android:layout_height="wrap_content"
-			android:text="@string/two_d_six" android:layout_alignParentTop="true"
-			android:layout_alignParentLeft="true">
-		</Button>
-		<Button android:id="@+id/d_sixty_eigth" android:layout_weight="1"
-			android:layout_width="wrap_content" android:layout_height="wrap_content"
-			android:text="@string/d_sixty_eigth" android:layout_alignParentTop="true"
-			android:layout_toRightOf="@+id/two_d_six">
-		</Button>
-		<Button android:id="@+id/d_three" android:layout_weight="1"
-			android:layout_width="wrap_content" android:layout_height="wrap_content"
-			android:text="@string/d_three" android:layout_alignParentTop="true"
-			android:layout_toRightOf="@+id/two_sixty_eigth">
-		</Button>
-
-	</LinearLayout>
-	
-	<TextView android:id="@+id/reroll_text"
-		android:layout_width="fill_parent" android:layout_height="wrap_content"
-		android:text="@string/reroll_text" android:textColor="@color/textColor">
-	</TextView>
-
-	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-		android:orientation="horizontal" android:layout_width="fill_parent"
-		android:layout_height="wrap_content">
-
-		<Button android:id="@+id/reroll_one"
-			android:layout_weight="1" android:layout_width="wrap_content"
-			android:layout_height="wrap_content" android:text="@string/reroll_one"
-			android:layout_alignParentTop="true" android:layout_alignParentLeft="true">
-		</Button>
-		<Button android:id="@+id/reroll_two"
-			android:layout_weight="1" android:layout_width="wrap_content"
-			android:layout_height="wrap_content" android:text="@string/reroll_two"
-			android:layout_alignParentLeft="true">
-		</Button>
-		<Button android:id="@+id/reroll_three" android:layout_weight="1"
-			android:layout_width="wrap_content" android:layout_height="wrap_content"
-			android:text="@string/reroll_three" android:layout_alignParentLeft="true">
-		</Button>
-		<Button android:id="@+id/reroll_four" android:layout_weight="1"
-			android:layout_width="wrap_content" android:layout_height="wrap_content"
-			android:text="@string/reroll_four" android:layout_alignParentLeft="true">
-		</Button>
-
-	</LinearLayout>
-
-	<LinearLayout android:orientation="vertical"
-		android:layout_width="fill_parent" android:layout_height="fill_parent"
+	<LinearLayout
+        android:orientation="vertical"
+		android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
 		android:layout_weight="1">
 
-		<TextView android:id="@+id/sequenceViewer"
-			android:layout_width="fill_parent" android:layout_height="wrap_content"
-			android:text="" android:textSize="20sp"
-			android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
+		<TextView
+            android:id="@+id/sequenceViewer"
+			android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+			android:text=""
+            android:textSize="20sp"
 			android:textColor="@color/textColor">
 		</TextView>
 
-		<TextView android:id="@+id/probabilityResult"
-			android:layout_width="fill_parent" android:layout_height="wrap_content"
-			android:text="" android:textSize="25sp"
-			android:layout_alignParentTop="true" android:layout_alignParentLeft="true"
-			android:gravity="left" android:paddingTop="10sp" android:textColor="@color/textColor">
+		<TextView
+            android:id="@+id/probabilityResult"
+			android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+			android:text=""
+            android:textSize="25sp"
+			android:gravity="start"
+            android:paddingTop="10sp"
+            android:textColor="@color/textColor">
 		</TextView>
 
 	</LinearLayout>
 
-	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-		android:orientation="horizontal" android:layout_width="fill_parent"
-		android:layout_height="fill_parent" android:layout_weight="1.2"
+	<LinearLayout
+		android:orientation="horizontal"
+        android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+        android:layout_weight="1.2"
 		android:gravity="bottom">
 
-		<Button android:id="@+id/clearList" android:layout_weight="1"
-			android:layout_width="fill_parent" android:layout_height="wrap_content"
-			android:text="@string/clearList">
-		</Button>
+		<Button android:id="@+id/clearList"
+            android:layout_weight="1"
+			android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+			android:text="@string/clearList" />
 
 	</LinearLayout>
 

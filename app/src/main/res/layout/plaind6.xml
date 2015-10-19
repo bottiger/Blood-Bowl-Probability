@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView android:id="@+id/noRerollText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/noRerollText"
+        android:textColor="@color/textColor" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <Button android:id="@+id/two_plus"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/two_plus" >
+        </Button>
+        <Button
+            android:id="@+id/three_plus"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/three_plus" >
+        </Button>
+        <Button android:id="@+id/four_plus"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/four_plus" >
+        </Button>
+        <Button android:id="@+id/five_plus"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/five_plus" >
+        </Button>
+
+        <Button android:id="@+id/six_plus"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/six_plus" >
+        </Button>
+
+    </LinearLayout>
+
+</merge>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:id="@+id/multiDieText"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/multiDieText"
+        android:textColor="@color/textColor" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/two_d_six"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/two_d_six">
+        </Button>
+
+        <Button
+            android:id="@+id/d_sixty_eigth"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/d_sixty_eigth">
+        </Button>
+        <Button
+            android:id="@+id/d_three"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/d_three" >
+        </Button>
+
+    </LinearLayout>
+
+</merge>
