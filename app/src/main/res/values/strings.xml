@@ -1,43 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    
+
     <string name="app_name">Blood Bowl Probability Calculator</string>
-<string name="two_plus">2+</string>
-<string name="three_plus">3+</string>
-<string name="four_plus">4+</string>
-<string name="five_plus">5+</string>
-<string name="six_plus">6+</string>
-<string name="calculateProbability">Calculate Probability</string>
-<string name="clearList">Reset</string>
+    <string name="two_plus">2+</string>
+    <string name="three_plus">3+</string>
+    <string name="four_plus">4+</string>
+    <string name="five_plus">5+</string>
+    <string name="six_plus">6+</string>
+    <string name="calculateProbability">Calculate Probability</string>
+    <string name="clearList">Reset</string>
 
+    <string name="noRerollText">Plain D6</string>
+    <string name="blockDiceText">Block Dice</string>
+    <string name="blockDiceTwoDown">-3</string>
+    <string name="blockDiceOneDown">-2</string>
+    <string name="blockDiceOne">1</string>
+    <string name="blockDiceTwo">2</string>
+    <string name="blockDiceThree">3</string>
 
-
-
-
-
-
-
-
-<color name="active_button">#00FF00</color>
-<color name="deactive_button">#FF0000</color>
-<string name="noRerollText">Plain D6</string>
-<string name="blockDiceText">Block Dice</string>
-<string name="blockDiceTwoDown">-3</string>
-<string name="blockDiceOneDown">-2</string>
-<string name="blockDiceOne">1</string>
-<string name="blockDiceTwo">2</string>
-<string name="blockDiceThree">3</string>
-
-<string name="reroll_one">Dodge</string>
-<string name="reroll_two">Sure hands</string>
-<string name="reroll_three">Sure feet</string>
-<string name="reroll_four">Other</string>
-<string name="reroll_text">Rerolls ( Select after choosing a dice roll)</string>
-<string name="blockDiceAccept">Accept</string>
-<string name="blockDiceCancel">Cancel</string>
-<color name="textColor">#FFF</color>
-<string name="two_d_six">2D6</string>
-<string name="d_sixty_eigth">D68</string>
-<string name="multiDieText">Other Die</string>
-<string name="d_three">D3</string>
+    <string name="reroll_one">Dodge</string>
+    <string name="reroll_two">Sure hands</string>
+    <string name="reroll_three">Sure feet</string>
+    <string name="reroll_four">Other</string>
+    <string name="reroll_text">Rerolls ( Select after choosing a dice roll)</string>
+    <string name="blockDiceAccept">Accept</string>
+    <string name="blockDiceCancel">Cancel</string>
+    <string name="two_d_six">2D6</string>
+    <string name="d_sixty_eigth">D68</string>
+    <string name="multiDieText">Other Dice</string>
+    <string name="d_three">D3</string>
 </resources>

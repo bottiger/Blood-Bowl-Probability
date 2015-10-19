@@ -8,6 +8,9 @@ android {
         applicationId "com.game.bloodbowlprobability"
         minSdkVersion 4
         targetSdkVersion 23
+
+        versionName "0.8"
+        versionCode 23
     }
 
     buildTypes {

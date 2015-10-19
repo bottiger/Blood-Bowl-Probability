@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="primary_dark_material_light">#dddddd</color>
+
+    <color name="active_button">#00FF00</color>
+    <color name="deactive_button">#FF0000</color>
+
+    <color name="textColor">#FFF</color>
 </resources>

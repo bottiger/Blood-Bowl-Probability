@@ -1,52 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-	android:layout_width="wrap_content" android:layout_height="wrap_content"
-	android:orientation="vertical"  android:padding="10dp">
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+	android:orientation="vertical"
+    android:padding="10dp">
 
-	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-		android:orientation="horizontal" android:layout_width="fill_parent"
-		android:layout_height="wrap_content" android:gravity="center">
+	<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+		android:orientation="horizontal"
+        android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+        android:gravity="center">
 
-		<ImageButton android:id="@+id/blockDiePow"
-			android:layout_weight="1" android:src="@drawable/pow"
-			android:layout_width="wrap_content" android:layout_height="wrap_content" />
+		<ImageButton
+			android:id="@+id/blockDiePow"
+			android:layout_weight="1"
+			android:src="@drawable/pow"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content" />
 
-		<ImageButton android:id="@+id/blockDieStumbles"
-			android:layout_weight="1" android:src="@drawable/stumbles"
-			android:layout_width="wrap_content" android:layout_height="wrap_content" />
+		<ImageButton
+			android:id="@+id/blockDieStumbles"
+			android:layout_weight="1"
+			android:src="@drawable/stumbles"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content" />
 
-		<ImageButton android:id="@+id/blockDiePushed"
-			android:layout_weight="1" android:src="@drawable/pushed"
-			android:layout_width="wrap_content" android:layout_height="wrap_content" />
+		<ImageButton
+			android:id="@+id/blockDiePushed"
+			android:layout_weight="1"
+			android:src="@drawable/pushed"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content" />
 
 	</LinearLayout>
 
-	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-		android:orientation="horizontal" android:layout_width="fill_parent"
-		android:layout_height="wrap_content" android:gravity="center">
+	<LinearLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:orientation="horizontal"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:gravity="center">
 
-		<ImageButton android:id="@+id/blockDieBothdown"
+		<ImageButton
+			android:id="@+id/blockDieBothdown"
 			android:src="@drawable/bothdown"
-			android:layout_width="wrap_content" android:layout_height="wrap_content" />
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content" />
 
 		<ImageButton android:id="@+id/blockDieSkull"
 			android:src="@drawable/skull"
-			android:layout_width="wrap_content" android:layout_height="wrap_content" />
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content" />
 
 	</LinearLayout>
 	
-	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-		android:orientation="horizontal" android:layout_width="fill_parent"
+	<LinearLayout
+		xmlns:android="http://schemas.android.com/apk/res/android"
+		android:orientation="horizontal"
+		android:layout_width="fill_parent"
 		android:layout_height="wrap_content">
 			
-		<Button android:id="@+id/blockDiceAccept" android:layout_weight="1"
-			android:layout_width="wrap_content" android:layout_height="wrap_content"
-			android:text="@string/blockDiceAccept" android:layout_alignParentTop="true">
+		<Button
+			android:id="@+id/blockDiceAccept"
+			android:layout_weight="1"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/blockDiceAccept"
+			android:layout_alignParentTop="true">
 		</Button>
 			
-		<Button android:id="@+id/blockDiceCancel" android:layout_weight="1"
-			android:layout_width="wrap_content" android:layout_height="wrap_content"
-			android:text="@string/blockDiceCancel" android:layout_alignParentTop="true">
+		<Button
+			android:id="@+id/blockDiceCancel"
+			android:layout_weight="1"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:text="@string/blockDiceCancel"
+			android:layout_alignParentTop="true">
 		</Button>
 
 	</LinearLayout>
